@@ -1,18 +1,21 @@
-//Get the button element
-const element = document.querySelector("#btnCounter");
-
-let counter = 0;
-console.log(counter);
+let totalExpense = 0;
 
 
-//Function to increment a number
-function counterIncrement() {
-    //Every click increment a number
-    counter  = counter + 1;
-    console.log(counter);
+function AddExpenseToTotal(){
+    //Listen in the input section
+    const inputElement = document.querySelector("#inputAmount");
+    const textAmount = inputElement.value;
+
+    //Convert the string to int
+    const expense = parseInt(textAmount,10);
+
+    totalExpense = totalExpense + expense; 
 }
 
-//Listen to the event
-element.addEventListener("click", counterIncrement, false);
+//Get the button element
+const element = document.querySelector("#btnAddExpense");
+
+//Listen to the button click
+element.addEventListener("click", AddExpenseToTotal, false);
 
 counterIncrement();
