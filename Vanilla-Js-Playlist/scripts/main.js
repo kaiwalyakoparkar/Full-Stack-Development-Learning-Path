@@ -12,7 +12,12 @@ const inputElement = document.querySelector("#inputAmount");
 //Set the heading element to totalExpense
 headingEl.textContent = totalExpense;
 
+// All expenses at one place
+const allExpenses = [];
+
 function AddExpenseToTotal(){
+    const expenseItem = {};
+
     //Listen in the input section
     const textAmount = inputElement.value;
 
@@ -22,6 +27,16 @@ function AddExpenseToTotal(){
     //Convert the string to int
     const expense = parseInt(textAmount,10);
 
+    //put it in object
+    expenseItem.desc = textDesc;
+    expenseItem.amount = expense;
+
+    allExpenses.push(expenseItem);
+
+    console.clear();
+    console.table(allExpenses);
+    
+    //add current expense to total expense
     totalExpense = totalExpense + expense; 
 
     //Set heading element to totalExpense
