@@ -33,6 +33,7 @@ function AddExpenseToTotal(){
     //put it in object
     expenseItem.desc = textDesc;
     expenseItem.amount = expense;
+    expenseItem.moment = new Date();
 
     allExpenses.push(expenseItem);
     
@@ -43,15 +44,8 @@ function AddExpenseToTotal(){
     const someText = `Total is: ${totalExpense}`;
     headingEl.textContent = someText;
 
-    const allExpenseHTML= allExpenses.map((expense) => {
-        return `<div>${expense.amount}::${expense.desc}</div>`;
-    });
-
-    const joinedAllExpenseHTML = allExpenseHTML.join("");
-    
-    console.log(joinedAllExpenseHTML);
-
-    expenseTableEl.innerHTML = joinedAllExpenseHTML;
+   //rendering the list
+    renderList(allExpenses);
 
 }
 
@@ -61,4 +55,85 @@ const element = document.querySelector("#btnAddExpense");
 //Listen to the button click
 element.addEventListener("click", AddExpenseToTotal, false);
 
-counterIncrement();
+//Controller functions
+
+//Get date string
+function getDateString(momento) {
+    return (momento.toLocaleDateString('en-US',{
+        year:'numeric', 
+        month:'long', 
+        day:'numeric'
+    }));
+}
+
+//Delete items
+function deleteItem(dateValue) {
+    //Creating a new array
+    // const newArr = [];
+
+    //For loop implementation
+
+    //Deleting the element by adding all other elements to the new array and re-rendering the new array
+    // for(let i = 0; i < allExpenses.length; i++){
+    //     //Checking the id and deleting the matching entity
+    //     if(allExpenses[i].moment.valueOf() !== dateValue){
+    //         newArr.push(allExpenses[i]);
+    //     }
+    // }
+
+    //
+
+
+    //This is second implimentation
+
+
+    // const newArr = allExpenses.filter((expense) => {
+    //     if(expense.moment.valueOf() !== dateValue){
+    //         return expense;
+    //     }
+    // });
+
+
+    //Most low code way
+    
+    const newArr = allExpenses.filter(expense => expense.moment.valueOf() !== dateValue);
+
+    //re-rendering the new array
+    renderList(newArr);
+}
+
+//View Layer
+
+//Rerendering after deletion
+function renderList(arrOfList) {
+    const allExpenseHTML= arrOfList.map((expense) => createListItem(expense));
+
+    const joinedAllExpenseHTML = allExpenseHTML.join("");
+
+    expenseTableEl.innerHTML = joinedAllExpenseHTML;
+}
+
+//Destructuring concept used
+function createListItem({desc, amount, moment}){
+    return `
+        <li class="list-group-item d-flex justify-content-between">
+                <div class="d-flex flex-column">
+                    ${desc}
+                    <small class="text-muted">${getDateString(moment)}</small>
+                </div>
+                <div>
+                    <span class="px-5">
+                        ${amount}
+                    </span>
+                    <button 
+                        type="button" 
+                        class="btn btn-outline-danger btn-sm"
+                        onClick = "deleteItem(${moment.valueOf()})"
+                        >
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </li>
+    ` ;
+}
+
