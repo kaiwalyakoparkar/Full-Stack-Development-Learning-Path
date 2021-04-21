@@ -44,13 +44,8 @@ function AddExpenseToTotal(){
     const someText = `Total is: ${totalExpense}`;
     headingEl.textContent = someText;
 
-    const allExpenseHTML= allExpenses.map((expense) => createListItem(expense));
-
-    const joinedAllExpenseHTML = allExpenseHTML.join("");
-    
-    
-
-    expenseTableEl.innerHTML = joinedAllExpenseHTML;
+   //rendering the list
+    renderList(allExpenses);
 
 }
 
@@ -73,16 +68,50 @@ function getDateString(momento) {
 
 //Delete items
 function deleteItem(dateValue) {
-    console.log("Delete Item was called", dateValue);
+    //Creating a new array
+    // const newArr = [];
 
-    for(let i = 0; i < allExpenses.length; i++){
-        //Checking the id and deleting the matching entity
-        if(allExpenses[i].moment.valueOf()=== dateValue){
-            console.log("Item found", allExpenses[i]);
-        }
-    }
+    //For loop implementation
+
+    //Deleting the element by adding all other elements to the new array and re-rendering the new array
+    // for(let i = 0; i < allExpenses.length; i++){
+    //     //Checking the id and deleting the matching entity
+    //     if(allExpenses[i].moment.valueOf() !== dateValue){
+    //         newArr.push(allExpenses[i]);
+    //     }
+    // }
+
+    //
+
+
+    //This is second implimentation
+
+
+    // const newArr = allExpenses.filter((expense) => {
+    //     if(expense.moment.valueOf() !== dateValue){
+    //         return expense;
+    //     }
+    // });
+
+
+    //Most low code way
+    
+    const newArr = allExpenses.filter(expense => expense.moment.valueOf() !== dateValue);
+
+    //re-rendering the new array
+    renderList(newArr);
 }
 
+//View Layer
+
+//Rerendering after deletion
+function renderList(arrOfList) {
+    const allExpenseHTML= arrOfList.map((expense) => createListItem(expense));
+
+    const joinedAllExpenseHTML = allExpenseHTML.join("");
+
+    expenseTableEl.innerHTML = joinedAllExpenseHTML;
+}
 
 //Destructuring concept used
 function createListItem({desc, amount, moment}){
