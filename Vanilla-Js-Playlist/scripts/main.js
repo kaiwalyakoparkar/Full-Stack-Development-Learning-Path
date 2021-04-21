@@ -33,6 +33,7 @@ function AddExpenseToTotal(){
     //put it in object
     expenseItem.desc = textDesc;
     expenseItem.amount = expense;
+    expenseItem.moment = new Date();
 
     allExpenses.push(expenseItem);
     
@@ -43,7 +44,7 @@ function AddExpenseToTotal(){
     const someText = `Total is: ${totalExpense}`;
     headingEl.textContent = someText;
 
-    const allExpenseHTML= allExpenses.map((expense) => createListItem({expense}));
+    const allExpenseHTML= allExpenses.map((expense) => createListItem(expense));
 
     const joinedAllExpenseHTML = allExpenseHTML.join("");
     
@@ -59,17 +60,26 @@ const element = document.querySelector("#btnAddExpense");
 //Listen to the button click
 element.addEventListener("click", AddExpenseToTotal, false);
 
+//Controller functions
+function getDateString(momento) {
+    return (momento.toLocaleDateString('en-US',{
+        year:'numeric', 
+        month:'long', 
+        day:'numeric'
+    }));
+}
+
 //Destructuring concept used
-function createListItem({expense}){
+function createListItem({desc, amount, moment}){
     return `
         <li class="list-group-item d-flex justify-content-between">
                 <div class="d-flex flex-column">
-                    ${expense.desc}
-                    <small class="text-muted">March 11, 2019</small>
+                    ${desc}
+                    <small class="text-muted">${getDateString(moment)}</small>
                 </div>
                 <div>
                     <span class="px-5">
-                        ${expense.amount}
+                        ${amount}
                     </span>
                     <button type="button" class="btn btn-outline-danger btn-sm">
                         <i class="fas fa-trash-alt"></i>
