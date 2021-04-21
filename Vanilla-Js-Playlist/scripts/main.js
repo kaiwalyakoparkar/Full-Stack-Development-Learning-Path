@@ -43,13 +43,11 @@ function AddExpenseToTotal(){
     const someText = `Total is: ${totalExpense}`;
     headingEl.textContent = someText;
 
-    const allExpenseHTML= allExpenses.map((expense) => {
-        return `<div>${expense.amount}::${expense.desc}</div>`;
-    });
+    const allExpenseHTML= allExpenses.map((expense) => createListItem({expense}));
 
     const joinedAllExpenseHTML = allExpenseHTML.join("");
     
-    console.log(joinedAllExpenseHTML);
+    
 
     expenseTableEl.innerHTML = joinedAllExpenseHTML;
 
@@ -61,4 +59,23 @@ const element = document.querySelector("#btnAddExpense");
 //Listen to the button click
 element.addEventListener("click", AddExpenseToTotal, false);
 
-counterIncrement();
+//Destructuring concept used
+function createListItem({expense}){
+    return `
+        <li class="list-group-item d-flex justify-content-between">
+                <div class="d-flex flex-column">
+                    ${expense.desc}
+                    <small class="text-muted">March 11, 2019</small>
+                </div>
+                <div>
+                    <span class="px-5">
+                        ${expense.amount}
+                    </span>
+                    <button type="button" class="btn btn-outline-danger btn-sm">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </li>
+    ` ;
+}
+
