@@ -61,6 +61,8 @@ const element = document.querySelector("#btnAddExpense");
 element.addEventListener("click", AddExpenseToTotal, false);
 
 //Controller functions
+
+//Get date string
 function getDateString(momento) {
     return (momento.toLocaleDateString('en-US',{
         year:'numeric', 
@@ -68,6 +70,19 @@ function getDateString(momento) {
         day:'numeric'
     }));
 }
+
+//Delete items
+function deleteItem(dateValue) {
+    console.log("Delete Item was called", dateValue);
+
+    for(let i = 0; i < allExpenses.length; i++){
+        //Checking the id and deleting the matching entity
+        if(allExpenses[i].moment.valueOf()=== dateValue){
+            console.log("Item found", allExpenses[i]);
+        }
+    }
+}
+
 
 //Destructuring concept used
 function createListItem({desc, amount, moment}){
@@ -81,7 +96,11 @@ function createListItem({desc, amount, moment}){
                     <span class="px-5">
                         ${amount}
                     </span>
-                    <button type="button" class="btn btn-outline-danger btn-sm">
+                    <button 
+                        type="button" 
+                        class="btn btn-outline-danger btn-sm"
+                        onClick = "deleteItem(${moment.valueOf()})"
+                        >
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
