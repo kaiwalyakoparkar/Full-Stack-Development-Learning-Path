@@ -1,0 +1,11 @@
+p{
+    border: 1px solid black;
+    /* This has defalut display property as display : block  we will change it to inline*/
+    display: inline;
+}
+
+span{
+    border: 1px solid green;
+    /* This has defalut display property as display : inline  we will change it to block*/
+    display: block;
+}

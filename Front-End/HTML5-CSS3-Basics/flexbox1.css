@@ -1,0 +1,11 @@
+.mydivs{
+    /* It is verticle before now we will change it to horizontal now */
+    display: flex;/*This will change it to horizontal row*/
+}
+
+.mydivs div{
+    color: red;
+    height: 100px;
+    width: 100px;
+    margin: 2px;
+}
