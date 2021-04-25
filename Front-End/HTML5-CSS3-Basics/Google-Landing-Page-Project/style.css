@@ -1,0 +1,18 @@
+.NavBar{
+    text-align: right;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.gmail:hover{
+    text-decoration: underline;
+}
+.image:hover{
+    text-decoration: underline;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:10rem;
+}
