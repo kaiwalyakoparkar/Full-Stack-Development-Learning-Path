@@ -1,0 +1,26 @@
+h1{
+    /* This is a " # " hash value which contains the 6 alpha numberic characters which represent the color: Lowest 2 bit can be "00" and highest 2 digit can be "ff"
+    54 - represents the red gradient (can be alphanuberic 2 digit)
+    a0 - represents the green gradient (can be alphanuberic 2 digit)
+    df - represents the blue gradient (can be alphanuberic 2 digit)
+    */
+    color:#54a0df;
+
+    /* This is a " rgb " (red green blue) representation lowest can be 0 and max value can be 255
+    22 - represents the red gradient
+    39 - represents the green gradient
+    255 - represents the blue gradient
+    */
+
+    background-color: rgb(22, 39, 255);
+
+    /* This is a " rgba " (red green blue alpha) representation lowest can be 0 and max value can be 255 (for rgb) and lowest 0 and max 1 (for alpha) 
+    Alpha - represents the opacity of the text
+    120 - represents the red gradient
+    231 - represents the green gradient
+    33 - represents the blue gradient
+    1 - represents the opacity
+    */
+
+    color: rgba(120, 231, 33, 1);
+}

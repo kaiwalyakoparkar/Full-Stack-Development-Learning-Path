@@ -9,3 +9,9 @@
     width: 100px;
     margin: 2px;
 }
+
+/*
+display:flex; -> Initiates the flex
+justify-content: center; -> Center the elements on X axis (horizontal)
+align-items: center; -> Centers teh element on Y axis (Vertically)
+*/
