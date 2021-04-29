@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning input tags</title>
+</head>
+<body>
+    <form action="">
+        <!--Type tells the type of input and name tells the server about the input-->
+        Name : <input type="text" name="username"><br />
+
+        Email : <input type="email" name="useremail"><br />
+
+        Phone : <input type="tel" name="usermobile"><br />
+
+        DOB : <input type="date" name="dob">
+        Gender : <br />
+
+
+        <!--In radio giving same name to the group will enable you to select any one from the group-->
+        <input type="radio" name="gender"> Male <br />
+        <input type="radio" name="gender">Female
+        <br />
+        <input type="radio" name="gender"> Other <br />
+
+
+        <!--In checkbox it is not necessary to give all the group members the same name-->
+        <input type="checkbox" name="lang"> English <br />
+        <input type="checkbox" name="lang"> Hindi <br />
+        <input type="checkbox" name="lang"> Marathi <br />
+        <input type="checkbox" name="lang"> Other <br />
+
+        Color : <input type="color" name="uicolor"><br />
+
+        Input file : <input type="file" name="the file upload">
+    </form>
+</body>
+</html>
