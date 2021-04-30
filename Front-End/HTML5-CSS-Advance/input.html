@@ -6,15 +6,15 @@
     <title>Learning input tags</title>
 </head>
 <body>
-    <form action="">
+    <form action="" id="myform">
         <!--Type tells the type of input and name tells the server about the input-->
-        Name : <input type="text" name="username"><br />
+        Name : <input type="text" name="username" autofocus placeholder="Enter your First name"><br />
 
-        Email : <input type="email" name="useremail"><br />
+        Email : <input type="email" name="useremail" placeholder="Enter your Last name"><br />
 
-        Phone : <input type="tel" name="usermobile"><br />
+        Phone : <input type="tel" name="usermobile" placeholder="Enter your Mobile number"><br />
 
-        DOB : <input type="date" name="dob">
+        DOB : <input type="date" name="dob" disabled>
         Gender : <br />
 
 
@@ -33,7 +33,17 @@
 
         Color : <input type="color" name="uicolor"><br />
 
-        Input file : <input type="file" name="the file upload"><br />
+        <!--This will accept only audio files with all formats-->
+        Audio file : <input type="file" name="the file upload" accept="audio/*"><br />
+
+        <!--This will accept only video files with all formats-->
+        Video file : <input type="file" name="the file upload" accept="video/*"><br />
+
+        <!--This will accept only image files with all formats-->
+        Image file : <input type="file" name="the file upload" accept="image/*"><br />
+
+        <!--This will accept only image files with all formats-->
+        Multiple file : <input type="file" name="the file upload" multiple><br />
 
         Person : <input type="number" name="personCount" min="0" max="5"><br />
 
@@ -41,11 +51,12 @@
 
         Search : <input type="search" name="searchBox"><br />
 
-        Url : <input type="url" name="inputUrl"><br />
-
-        <input type="submit" value="Submit"><br />
+        <input type="submit" value="Submit">
         <input type="reset" value="Reset">
-
     </form>
+
+    <!--Now url is a part of the about form inspite of being outside the tags using the same id for the both-->
+    Url : <input type="url" name="inputUrl" form="myform"><br />
+
 </body>
 </html>
