@@ -1,0 +1,30 @@
+
+/*
+This are the vars for entire project. You can use them anywhere. There are specific too like 
+:h1{}
+:body{}
+:p{}
+*/
+:root{
+    --color-one: olive;
+    --color-two: white;
+}
+
+body{
+    margin: 0;
+    padding:0;
+}
+h1{
+    color:var(--color-one);
+    background-color: var(--color-two);
+    margin:0;
+    text-align: center;
+}
+
+p{
+    color:var(--color-two);
+    background-color: var(--color-one);
+    margin:0;
+    padding:50px;
+    text-align: center;
+}
