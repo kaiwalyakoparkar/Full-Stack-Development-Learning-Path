@@ -1,0 +1,36 @@
+:root{
+    /*These are the root vars*/
+    --para-color:#333;
+    --title-color: aquamarine;
+    --high-color: orange;
+}
+
+body{
+    overflow-x: hidden;
+    margin: 0;
+}
+
+h1{
+    color: var(--title-color);
+    background-color: var(--para-color);
+    /*
+    calc(-50vw + 50%) is a trick to make it streatch for entire screen
+    */
+    margin: 0 calc(-50vw + 50%);
+    padding: 10px 0.5em;
+
+    /*
+    Increase the font size using the calc funtion
+    */
+    font-size: calc(1vw + 2rem);
+}
+
+p{
+    color: var(--para-color);
+}
+
+.highlight{
+    background-color: var(--high-color);
+    margin: 0 calc(-50vw + 50%);
+    padding: 10px;
+}
