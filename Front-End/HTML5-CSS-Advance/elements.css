@@ -1,0 +1,39 @@
+body{
+    margin:0;
+    background-color: black;
+}
+h1{
+    color: aquamarine;
+    text-align: center;
+}
+h4{
+    color: orange;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+    color: brown;
+}
+a:hover{
+    color:aquamarine;
+}
+blockquote{
+    color: aquamarine;
+    text-align: center;
+    font-size: 1.35rem;
+    font-family: 'Lobster', cursive;
+}
+/*Pseudo elements starts*/
+blockquote::before{
+    content: open-quote;
+    color: orange;
+}
+blockquote::after{
+    content: close-quote;
+    color: orange;
+}
+/*Pseudo elements ends*/
+p{
+    color: aquamarine;
+    padding: 20px;
+}
