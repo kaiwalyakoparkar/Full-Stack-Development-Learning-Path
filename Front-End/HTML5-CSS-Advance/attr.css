@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+}
+h1{
+    padding:2px 25px;
+}
+p{
+    padding: 2px 25px;
+}
+
+/*Selecting the tag and atting the attr() function*/
+[data-tooltip]::before{
+    content:"The id of the paragraph is " attr(data-tooltip) " and that's awesome"
+}
