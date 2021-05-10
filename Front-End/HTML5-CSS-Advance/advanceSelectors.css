@@ -1,0 +1,25 @@
+/*This is universal selector that means that it selects everything is the specified segment '*' */
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+/*Direct children selector '>' */
+.direct-children > p{
+    color: orange;
+}
+
+/*Adjacent siblings '+' */
+.adjacent-sibling p + p{
+    color: blue;
+}
+
+/*General sibling '~' */
+.general-sibling p ~ p{
+    color: pink;
+}
+
+/*Normal css*/
+h1{
+    color:aquamarine;
+}
