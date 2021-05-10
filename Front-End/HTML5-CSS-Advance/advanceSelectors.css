@@ -1,0 +1,32 @@
+/*This is universal selector that means that it selects everything is the specified segment '*' */
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+/*Direct children selector '>' */
+.direct-children > p{
+    color: orange;
+}
+
+/*Adjacent siblings '+' */
+.adjacent-sibling p + p{
+    color: blue;
+}
+
+/*General sibling '~' */
+.general-sibling p ~ p{
+    color: pink;
+}
+
+/*Attribute selector '[]'*/
+/*This will select the target attribute from the anchor tag. This can be used when you need to specifically design a segment without giving it a special class*/
+a[target]{
+    color: aquamarine;
+    text-decoration: none;
+}
+
+/*Normal css*/
+h1{
+    color:aquamarine;
+}

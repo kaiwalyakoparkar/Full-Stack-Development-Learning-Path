@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="advanceSelectors.css">
+    <title>Learning Css Selectors</title>
+</head>
+<body>
+    <h1>
+        Advance Css Selectors
+    </h1>
+    <section class="direct-children">
+        ================= 
+        <p>This is the direct children</p>
+        <p>This is the direct children </p>
+        <p>This is the direct children</p>
+        <div class="not-a-direct-children">
+            <p>
+                This is inside a div hence it is not a direct children
+            </p>
+        </div>
+        <p>This is the direct children</p>
+        ================== <br/>
+    </section>
+    <section class="adjacent-sibling">
+        ==================
+        <p>This does not have adjacent siblling (Does not have anything above this in this section)</p>
+        <p>This has a siblinhg</p>
+        <p>This has a siblinhg</p>
+        <a href="#">This breaks the adjacent sibling link and the next one would be different</a>
+        <p>This has a siblinhg</p>
+        <p>This has a siblinhg</p>
+        ==================
+    </section>
+    <section class="general-sibling">
+        ==================
+        <p>This does not have General siblling (Does not have anything above this in this section)</p>
+        <p>This has a sibling</p>
+        <p>This has a siblinhg</p>
+        <a href="#">Even if this breaks the flow still the next sibling wont have an effect</a>
+        <p>This has a siblinhg</p>
+        <p>This has a siblinhg</p>
+        ==================
+    </section>
+    <section class="attribute">
+        <a href="#" target="_black">
+            This is the link
+        </a>
+    </section>
+</body>
+</html>
