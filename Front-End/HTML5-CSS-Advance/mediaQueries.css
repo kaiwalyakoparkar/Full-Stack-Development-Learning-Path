@@ -1,0 +1,48 @@
+/*This is the common css*/
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.title{
+    color: red;
+}
+.subtitle{
+    color:aquamarine;
+}
+
+/*Media queries*/
+/* 
+
+==========================
+
+-------------- PARAMETER -----------
+screen : All the screen (Mobile, desktop)
+print : how it should look while printing
+speech : when the speech is intended
+all : when have to apply for all
+
+@media PARAMETER and (CONDITION){
+     Execution
+}
+It's okay if you not give a PARAMETER. It will take it as all.
+
+==========================
+
+-------------- CONDITION --------------
+max-width:size => It will execute the media work first until it's limit is crossed
+
+min-width:size => It wil execute the non-media work first until it's boundry is met
+
+orientation:landscape => Executes the commands within if the orientation of the screen becomes landscape
+
+orientation:potrait =>  Executes the commands within if the orientation of the screen becomes potrait
+*/
+@media (max-width:500px){
+    .title{
+        color: aqua;
+    }
+    .subtitle{
+        color: red;
+    }
+}
