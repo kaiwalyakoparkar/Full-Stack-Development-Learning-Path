@@ -19,6 +19,13 @@
     color: pink;
 }
 
+/*Attribute selector '[]'*/
+/*This will select the target attribute from the anchor tag. This can be used when you need to specifically design a segment without giving it a special class*/
+a[target]{
+    color: aquamarine;
+    text-decoration: none;
+}
+
 /*Normal css*/
 h1{
     color:aquamarine;
