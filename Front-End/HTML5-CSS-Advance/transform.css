@@ -1,0 +1,33 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+a[href]{
+    color: orange;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    height: 80vh;
+}
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aquamarine;
+    height: 150px;
+    width: 150px;
+    transition: all .1s ease-in;
+    font-size: 120px;
+}
+
+.box:hover{
+    transform: rotate(45deg);
+    /* transform: skew(45deg); */
+    /* transform: scale(2);*/
+    /* transform: translateX(50px); */
+    /* transform: translateY(50px); */
+}
