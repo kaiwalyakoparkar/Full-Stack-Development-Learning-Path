@@ -1,0 +1,25 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.container{
+    background-color: aquamarine;
+}
+.box{
+    background-color: black;
+    height: 10%;
+    width: 10%;
+    /*This is the ideal format for making it in a one line*/
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: learn 5s 2 ease-in alternate;
+}
+
+@keyframes learn{
+    from{
+        width: 10%;
+    }
+    to{
+        width: 100%;
+    }
+}
