@@ -1,0 +1,51 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+a[href]{
+    color: orange;
+}
+.container{
+    background-color: aquamarine;
+}
+.box{
+    background-color: red;
+    height: 10%;
+    width: 10%;
+
+    /*Position need to be relative to make the box animation outside the container*/
+    position: relative; 
+
+    /*This is the ideal format for making it in a one line*/
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: learn 5s infinite forwards;
+}
+
+/*This is % method*/
+@keyframes learn{
+    0%{
+        left: 0;
+        top: 100;
+    }
+    25%{
+        left: 100;
+        top: 100;
+    }
+    75%{
+        left: 100;
+        top: 0;
+    }
+    100%{
+        left: 0;
+        top: 0;
+    }
+}
+/* This was from and to method
+@keyframes learn{
+    from{
+        width: 10%;
+    }
+    to{
+        width: 100%;
+    }
+} */
