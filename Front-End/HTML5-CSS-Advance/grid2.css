@@ -1,0 +1,27 @@
+*,*::before, *::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+body{
+    background-color: black;
+}
+h1,h3{
+    color: aquamarine;
+}
+a[href]{
+    color: orange;
+}
+
+/*Griding starts here*/
+.grid{
+    display: grid;
+    /* grid-template-columns: 30px 30px auto; */
+    grid-template-rows: 1fr 2fr auto;
+    grid-auto-rows: 100px;
+    grid-gap: 20px;
+}
+.box{
+    background-color: brown;
+    height: 20px;
+}
