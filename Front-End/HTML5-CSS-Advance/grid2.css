@@ -17,11 +17,29 @@ a[href]{
 .grid{
     display: grid;
     /* grid-template-columns: 30px 30px auto; */
-    grid-template-rows: 1fr 2fr auto;
-    grid-auto-rows: 100px;
+    grid-template-columns: 2.5fr 1fr;
+    /* grid-auto-rows: 100px; */
+    grid-auto-columns:minmax(200px, auto);
     grid-gap: 20px;
 }
-.box{
-    background-color: brown;
-    height: 20px;
+
+.grid > div{
+    background-color: #eee;
+    padding: 1em;
+}
+/*nth child odd selects the odd child*/
+.grid > div:nth-child(odd){
+    background-color: rgb(126, 125, 125);
+}
+
+/*Nested grid starts here*/
+.nested{
+    display: grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows: 70px;
+    grid-gap: .2em;
+}
+.nested > div{
+    border: 2px solid red;
+    padding: 0.3em;
 }
