@@ -13,3 +13,8 @@
     --font-weight-3:700;
 }
 
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+    
+}
