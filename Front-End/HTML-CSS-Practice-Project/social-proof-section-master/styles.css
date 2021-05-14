@@ -96,3 +96,59 @@ body{
 .lower-box{
     background:url('./images/bg-pattern-bottom-mobile.svg');
 }
+
+@media screen and (min-width: 770px){
+    body{
+        font-size: 15px;
+        background-image: url('./images/bg-pattern-top-desktop.svg');
+        background-repeat: no-repeat;
+    }
+    .upper-box{
+        display: flex;
+    }
+    .title-text{
+        font-size: 3.333rem;
+    }
+    .main-para{
+        font-size: 1.333rem;
+    }
+    .text{
+        text-align: left;
+    }
+    .lower-box{
+        display: flex;
+        position: absolute;
+    }
+    .testimonials{
+        overflow: hidden;
+        background-color: var(--primary-color-1);
+        border-radius: 10px;
+        margin-top: 2rem;
+        margin-right: 2rem;
+        padding:2em;
+    }
+    .rating-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2em;
+        background-color: var(--neutral-2);
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        color: var(--primary-color-1);
+        font-weight: var(--font-weight-2);
+        width: 40vw;
+    }
+    .rb2{
+        margin-left: 5vw;
+    }
+    .rb3{
+        margin-left:10vw;
+    }
+    .ttm2{
+        margin-top: 10vh;
+    }
+    .ttm3{
+        margin-top: 20vh;
+    }
+}
