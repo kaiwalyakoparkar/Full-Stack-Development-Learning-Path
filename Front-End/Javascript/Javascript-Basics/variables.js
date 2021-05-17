@@ -1,5 +1,8 @@
-//let var const
+//Declared a variable
+var myNumber;
 
-let myName = "Kaiwalya Koparkar";
-var iLike = "pizza";
-const PI = 3.141;
+//Assigned the value to the variable
+myNumber = 5;
+
+//Printing the assigned number using variable
+console.log(myNumber);
