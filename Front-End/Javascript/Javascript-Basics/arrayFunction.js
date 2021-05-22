@@ -55,3 +55,28 @@ console.log(arrayIndexOf.indexOf("kaiwalya"));//prints 4
 let arrayIncludes = ["hello","my","name","is","kaiwalya"];
 console.log(arrayIncludes.includes("kaiwalya"));//prints true
 
+//Array.find() this is used to find the element especially when you have objects
+let students = [
+    {
+        name:"kaiwalya",
+        age:18
+    },
+    {
+        name:"ABC",
+        age:18
+    },
+    {
+        name:"XYZ",
+        age:18
+    },
+    {
+        name:"PQR",
+        age:19
+    },
+]
+
+var stud = students.find(s => {
+    return s.age==18; //prints kaiwalya 18 coz its the first occurance.
+});
+
+console.log(stud);
