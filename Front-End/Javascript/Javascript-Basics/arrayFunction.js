@@ -45,3 +45,9 @@ let result2 = arrayReduce2.reduce((addition2,element2)=>{
 },0);//fist time value of addition = 0 (the provided 0 after {}) and element = 1 (1st element of the array);
 //This is because sometimes you need to provide the value of the addition
 console.log(result2);
+
+//Array.indexOf() this is used to find the index at which the passed element resides on
+let arrayIndexOf = ["hello","my","name","is","kaiwalya"];
+//Indexes             0      1     2      3       4
+console.log(arrayIndexOf.indexOf("kaiwalya"));//prints 4
+
