@@ -32,3 +32,16 @@ arrayForEach.forEach((element)=>{
     console.log(element);//only tranversing purpose
 });
 
+//Array.reduce() this is used when you need to compress all the array elements into one value. For eg: Adding all the elements in the array and return sum
+let arrayReduce = [1,2,3,4,5,6,7,8,9,10];
+let result = arrayReduce.reduce((addition,element)=>{
+    return addition+element;
+});//fist time value of addition = 1 (1st element of array) and element = 2 (2nd element of the array);
+console.log(result);
+
+let arrayReduce2 = [1,2,3,4,5,6,7,8,9,10];
+let result2 = arrayReduce2.reduce((addition2,element2)=>{
+    return addition2+element2;
+},0);//fist time value of addition = 0 (the provided 0 after {}) and element = 1 (1st element of the array);
+//This is because sometimes you need to provide the value of the addition
+console.log(result2);
