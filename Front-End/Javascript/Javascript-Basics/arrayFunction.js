@@ -16,3 +16,19 @@ let arrayFilter2 = arrayFilter1.filter((element) => {
 });
 //Will print only [3,4,5] coz 1 & 2 are lesser than 2;
 console.log(arrayFilter2);
+
+//Array.forEach() function does not need to return anything. It is used like loops only. The major difference between .map() fucntion and .forEach() function is in .map() function you need second array to store all your values whereas .forEach() just traverses it
+let arrayForEach = ["kaiwalya",18,"koparkar","javascript"]
+//Will print 
+/*
+kaiwalya
+18
+koparkar
+javascript
+
+**Notice there are no [] around the result**
+*/
+arrayForEach.forEach((element)=>{
+    console.log(element);//only tranversing purpose
+});
+
