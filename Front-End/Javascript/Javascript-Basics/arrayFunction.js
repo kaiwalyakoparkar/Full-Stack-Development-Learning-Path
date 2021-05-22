@@ -46,8 +46,12 @@ let result2 = arrayReduce2.reduce((addition2,element2)=>{
 //This is because sometimes you need to provide the value of the addition
 console.log(result2);
 
-//Array.indexOf() this is used to find the index at which the passed element resides on
+//Array.indexOf() this is used to find the index at which the passed element resides on (Returns integer)
 let arrayIndexOf = ["hello","my","name","is","kaiwalya"];
 //Indexes             0      1     2      3       4
 console.log(arrayIndexOf.indexOf("kaiwalya"));//prints 4
+
+//Array.includes() this is used to check if the element exists in the array or not. (Returns boolean)
+let arrayIncludes = ["hello","my","name","is","kaiwalya"];
+console.log(arrayIncludes.includes("kaiwalya"));//prints true
 
