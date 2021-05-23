@@ -10,5 +10,5 @@ setInterval(() => {
     if(i == 5){
         i = -1;
     }
-    document.getElementById("interval").innerText = ++i;
+    document.getElementById("element").innerText = ++i;
 },1000);
