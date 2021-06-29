@@ -1,0 +1,26 @@
+{
+    "students": [
+        {
+            "name": "Kaiwalya",
+            "Marks": 95,
+            "isAdmin": true,
+            "programmingLanguages":["java","javascript","c++"],
+            "Address":{
+                "city":"Nashik",
+                "state": "Maharashtra",
+                "country": "India"
+            }
+        },
+        {
+            "name": "Mahesh",
+            "Marks": 91,
+            "isAdmin": false,
+            "programmingLanguages":["java","typescript","js"],
+            "Address":{
+                "city":"Mumbai",
+                "state": "Maharashtra",
+                "country": "India"
+            }
+        }
+    ]
+}
