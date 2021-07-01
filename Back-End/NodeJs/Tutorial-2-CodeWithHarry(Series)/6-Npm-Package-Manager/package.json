@@ -1,0 +1,17 @@
+{
+  "name": "practice-npm",
+  "version": "1.0.0",
+  "description": "This package is intended to learn more about npm pacakge manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "practice"
+  ],
+  "author": "Kaiwalya Koparkar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
