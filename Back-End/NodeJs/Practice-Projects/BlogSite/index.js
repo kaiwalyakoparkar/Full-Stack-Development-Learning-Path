@@ -33,5 +33,7 @@ We make it familiar with static folder and it's files.
 After the we create routes folder and add a js file to it which liks the index.js and the static/index.html.
     In routes folder we just give the endpoints and export it. which is catched by the index.js (the entry point) and served accordingly.
 
-So now it goes like Index.js (entry point) --> routes/blog.js --> serves static.html
+                                                                 -----> Fetch data.   
+                                                                /
+    So now it goes like Index.js (entry point) --> routes/blog.js --> Put's in template files.
 */
