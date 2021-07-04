@@ -1,0 +1,13 @@
+<div class="card bg-dark text-white">
+  <img src="{{this.banner}}" class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <h2 class="card-title">{{this.name}}</h2>
+    <p class="card-text">{{this.desc}}</p>
+    <p class="card-text">Rent: $ {{this.price}}</p>
+    <p class="card-text">Type: {{this.type}}</p>
+    <h3 class="card-title">Cast: </h3>
+    {{#each cast}}
+        <h5>{{this}}</h5>
+    {{/each}}
+  </div>
+</div>
