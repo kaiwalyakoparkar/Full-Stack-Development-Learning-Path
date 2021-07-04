@@ -1,0 +1,8 @@
+{{!-- This loops over the items and then prints them --}}
+<div class="container">
+    {{#each items}}
+        <a href="/shopItem/{{this.slug}}">
+            <h4>{{this.itemName}}</h4>
+        </a>
+    {{/each}}
+</div>
