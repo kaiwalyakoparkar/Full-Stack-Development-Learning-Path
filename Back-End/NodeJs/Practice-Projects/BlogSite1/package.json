@@ -1,0 +1,27 @@
+{
+  "name": "blog-site",
+  "version": "1.0.0",
+  "description": "This is a structured blog site",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm ./index.js"
+  },
+  "keywords": [
+    "blog",
+    "nodejs",
+    "express",
+    "routes",
+    "path",
+    "template-engine",
+    "express-handlebars"
+  ],
+  "author": "Kaiwalya Koparkar",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

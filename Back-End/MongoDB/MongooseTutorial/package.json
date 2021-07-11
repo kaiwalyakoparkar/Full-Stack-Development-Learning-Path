@@ -1,0 +1,21 @@
+{
+  "name": "mongoosetutorial",
+  "version": "1.0.0",
+  "description": "This is me learning mongoose",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mongoose",
+    "mongodb",
+    "mongodb-compass",
+    "nodejs",
+    "integration"
+  ],
+  "author": "Kaiwalya Koparkar",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.13.2"
+  }
+}
