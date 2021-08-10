@@ -15,13 +15,9 @@ app.use((req, res, next) => {
 //External Middleware
 app.use(morgan('dev'));
 
-//Routs Mounting.
+//Routes Mounting.
 app.use('/api/v1/tours', tourRoute);
 app.use('/api/v1/users', userRoute);
 
 //================= Starting the server==============
-const port = 3000;
-
-app.listen(port, () => {
-  console.log(`Server started on http://localhost:${port}`);
-});
+module.exports = app;

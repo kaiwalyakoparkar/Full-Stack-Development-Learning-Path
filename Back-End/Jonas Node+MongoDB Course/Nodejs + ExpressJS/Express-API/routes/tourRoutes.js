@@ -6,7 +6,7 @@ const route = express.Router();
 
 route.use(express.json());
 
-
+route.use('id', tourController.checkId);
 
 route
   .route('/') //Common route
