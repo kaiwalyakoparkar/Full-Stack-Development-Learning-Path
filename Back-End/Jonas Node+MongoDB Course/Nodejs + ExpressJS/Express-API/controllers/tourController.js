@@ -2,6 +2,16 @@ const fs = require('fs');
 const path = require('path');
 const tours = require(path.join(__dirname,'../dev-data/data/tours-simple.json'));
 
+exports.checkId = (req, res, next, val) => {
+  if (req.params.id <= tours.length) {
+    res.status(404).send({
+      status: 'fail',
+      message: 'Invalid ID'
+    });
+  }
+  next();
+}
+
 //================ Get all tours =========================
 exports.getAllTours = (req, res) => {
   res.json({
@@ -31,13 +41,13 @@ exports.getSingleTour = (req, res) => {
   // });
 
   // if(id > tours.length){ //This is also one of the way to check invalid url
-  if (!tour) {
-    res.status(404).send({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-    return;
-  }
+  // if (!tour) {
+  //   res.status(404).send({
+  //     status: 'fail',
+  //     message: 'Invalid ID'
+  //   });
+  //   return;
+  // }
 
   res.status(200).send({
     status: 'success',
@@ -83,12 +93,12 @@ exports.updateSingleTour = (req, res) => {
   });
 
   //404 Error handler
-  if (!tours) {
-    res.status(404).send({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-  }
+  // if (!tours) {
+  //   res.status(404).send({
+  //     status: 'fail',
+  //     message: 'Invalid ID'
+  //   });
+  // }
 
   //201 Respose handler
   const updatedTour = Object.assign(tour, req.body); //Update the tour
@@ -118,12 +128,12 @@ exports.deleteSingleTour = (req, res) => {
   });
 
   //Handling 404 error (If no tour found with the id)
-  if (!tour) {
-    res.status(404).send({
-      status: 'fail',
-      message: 'Invalid ID'
-    });
-  }
+  // if (!tour) {
+  //   res.status(404).send({
+  //     status: 'fail',
+  //     message: 'Invalid ID'
+  //   });
+  // }
 
   //204 Status handler
   //I will take all the tours which don't match the 'tour.id' in a single array and then overwrite the json file with this new array.

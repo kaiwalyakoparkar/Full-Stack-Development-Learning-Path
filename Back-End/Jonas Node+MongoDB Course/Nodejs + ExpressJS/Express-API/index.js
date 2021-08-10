@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 //External Middleware
 app.use(morgan('dev'));
 
-//Routs Mounting.
+//Routes Mounting.
 app.use('/api/v1/tours', tourRoute);
 app.use('/api/v1/users', userRoute);
 
