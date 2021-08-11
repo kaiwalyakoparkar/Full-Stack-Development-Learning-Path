@@ -7,12 +7,13 @@ route.use(express.json());
 
 route.param('id', tourController.checkId);
 
-route.use(tourController.checkBody);
+//Using for all commands
+// route.use(tourController.checkBody);
 
 route
   .route('/') //Common route
   .get(tourController.getAllTours) //get operation on this route
-  .post(tourController.addNewTour); //post operation on this route
+  .post(tourController.checkBody ,tourController.addNewTour); //post operation on this route with chained middleware
 
 route
   .route('/:id') //Common route
