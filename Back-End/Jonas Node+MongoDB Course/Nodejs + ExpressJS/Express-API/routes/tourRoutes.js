@@ -1,12 +1,13 @@
 const express = require('express');
 const tourController = require('../controllers/tourController');
 
-// const app = express();
 const route = express.Router();
 
 route.use(express.json());
 
 route.param('id', tourController.checkId);
+
+route.use(tourController.checkBody);
 
 route
   .route('/') //Common route

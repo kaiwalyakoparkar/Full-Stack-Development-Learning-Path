@@ -2,6 +2,20 @@ const fs = require('fs');
 const path = require('path');
 const tours = require(path.join(__dirname,'../dev-data/data/tours-simple.json'));
 
+exports.checkBody = (req, res, next) => {
+  
+  console.log('Checking if the name and price is defined correctly')
+
+  if (req.body.name == undefined || req.body.price < 0 || req.body.price == undefined){
+    return res.status(404).send({
+      status: "fail",
+      message: "name or price cannot be undefined"
+    });
+  }
+
+  next();
+}
+
 exports.checkId = (req, res, next, val) => {
   console.log(`Id requested is ${req.params.id}`)
   if (req.params.id >= tours.length) {
@@ -86,6 +100,7 @@ exports.addNewTour = (req, res) => {
 
 //================ Update a tour =========================
 exports.updateSingleTour = (req, res) => {
+  // res.status(201).send('Dummy Updated success');
   const id = req.params.id * 1; //get the id from request
 
   const tour = tours.find(ele => {
