@@ -3,8 +3,9 @@ const path = require('path');
 const tours = require(path.join(__dirname,'../dev-data/data/tours-simple.json'));
 
 exports.checkId = (req, res, next, val) => {
-  if (req.params.id <= tours.length) {
-    res.status(404).send({
+  console.log(`Id requested is ${req.params.id}`)
+  if (req.params.id >= tours.length) {
+    return res.status(404).send({
       status: 'fail',
       message: 'Invalid ID'
     });
