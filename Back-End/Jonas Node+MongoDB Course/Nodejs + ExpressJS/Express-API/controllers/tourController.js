@@ -6,8 +6,8 @@ exports.checkBody = (req, res, next) => {
   
   console.log('Checking if the name and price is defined correctly')
 
-  if (req.body.name == undefined || req.body.price < 0 || req.body.price == undefined){
-    return res.status(404).send({
+  if (!req.body.name || !req.body.price){
+    return res.status(404).json({
       status: "fail",
       message: "name or price cannot be undefined"
     });
@@ -19,7 +19,7 @@ exports.checkBody = (req, res, next) => {
 exports.checkId = (req, res, next, val) => {
   console.log(`Id requested is ${req.params.id}`)
   if (req.params.id >= tours.length) {
-    return res.status(404).send({
+    return res.status(404).json({
       status: 'fail',
       message: 'Invalid ID'
     });
