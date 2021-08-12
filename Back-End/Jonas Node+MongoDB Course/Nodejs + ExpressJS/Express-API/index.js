@@ -13,7 +13,13 @@ app.use((req, res, next) => {
 });
 
 //External Middleware
-app.use(morgan('dev'));
+app.use(express.json());
+
+if(process.env.NODE_ENV === 'development'){
+  app.use(morgan('dev'));
+}
+
+app.use(express.static(path.join(__dirname+'/public')));
 
 //Routes Mounting.
 app.use('/api/v1/tours', tourRoute);
