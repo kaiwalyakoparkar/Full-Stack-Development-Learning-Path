@@ -14,7 +14,11 @@ app.use((req, res, next) => {
 
 //External Middleware
 app.use(express.json());
-app.use(morgan('dev'));
+
+if(process.env.NODE_ENV === 'development'){
+  app.use(morgan('dev'));
+}
+
 app.use(express.static(path.join(__dirname+'/public')));
 
 //Routes Mounting.
