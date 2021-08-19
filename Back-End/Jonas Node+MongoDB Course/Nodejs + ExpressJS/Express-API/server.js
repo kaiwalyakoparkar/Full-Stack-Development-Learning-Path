@@ -10,10 +10,34 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-mongoose.connect(DB, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false
+mongoose
+  .connect(DB, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+  })
+  // .then((con) => {//for seeing more info
+  .then(() => {
+    // console.log(con.connection);//to see more info about the connection
+    console.log('MongoDB connected successfully');
+  });
+
+//Created a tours schema
+const tourSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Tour should have a name'],
+    unique: true
+  },
+  rating: {
+    type: Number,
+    default: 4.5
+  },
+  price: {
+    type: Number,
+    required: [true, 'Tour should have a price']
+  }
 });
 
 app.listen(port, () => {
