@@ -40,6 +40,9 @@ const tourSchema = new mongoose.Schema({
   }
 });
 
+//Creating model out of the tours schema
+const Tour = mongoose.model('Tour', tourSchema);
+
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
 });
