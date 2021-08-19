@@ -43,6 +43,23 @@ const tourSchema = new mongoose.Schema({
 //Creating model out of the tours schema
 const Tour = mongoose.model('Tour', tourSchema);
 
+//Creating a document and testing the model
+
+const testTour = new Tour({
+  name: 'The Forest Hicket',
+  rating: 4.8,
+  price: 475
+});
+
+testTour
+  .save()
+  .then(doc => {
+    console.log(doc);
+  })
+  .catch(err => {
+    console.log('ERROR: ', err);
+  });
+
 app.listen(port, () => {
   console.log(`Server started on http://localhost:${port}`);
 });
