@@ -5,7 +5,7 @@ const route = express.Router();
 
 route.use(express.json());
 
-route.param('id', tourController.checkId);
+// route.param('id', tourController.checkId);//Deprecated while integrating database
 
 //Using for all commands
 // route.use(tourController.checkBody);
@@ -13,7 +13,7 @@ route.param('id', tourController.checkId);
 route
   .route('/') //Common route
   .get(tourController.getAllTours) //get operation on this route
-  .post(tourController.checkBody ,tourController.addNewTour); //post operation on this route with chained middleware
+  .post(tourController.checkBody, tourController.addNewTour); //post operation on this route with chained middleware
 
 route
   .route('/:id') //Common route
