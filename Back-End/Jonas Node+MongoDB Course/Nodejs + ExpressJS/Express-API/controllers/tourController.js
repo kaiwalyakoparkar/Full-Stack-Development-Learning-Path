@@ -1,10 +1,14 @@
 const Tour = require('../models/tourModel.js');
 
 //================ Get all tours =========================
-exports.getAllTours = (req, res) => {
+exports.getAllTours = async (req, res) => {
+  const tours = await Tour.find();
+
   res.json({
     status: 'success',
-    requestedAt: req.requestTime
+    data: {
+      tours
+    }
   });
 };
 
@@ -23,9 +27,8 @@ exports.getSingleTour = (req, res) => {
 
 //================ Add a new tour =========================
 exports.addNewTour = async (req, res) => {
-
   try {
-    cont newTour = await Tour.create(req.body);
+    const newTour = await Tour.create(req.body);
 
     res.status(201).json({
       status: 'success',
@@ -33,15 +36,12 @@ exports.addNewTour = async (req, res) => {
         tour: newTour
       }
     });
-  } catch(err) {
-
+  } catch (err) {
     res.status(400).json({
-      status: "fail",
-      message: "Required fields not provided"
+      status: 'fail',
+      message: err
     });
-
   }
-  
 };
 
 //================ Update a tour =========================
