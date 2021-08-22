@@ -2,14 +2,21 @@ const Tour = require('../models/tourModel.js');
 
 //================ Get all tours =========================
 exports.getAllTours = async (req, res) => {
-  const tours = await Tour.find();
+  try {
+    const tours = await Tour.find();
 
-  res.json({
-    status: 'success',
-    data: {
-      tours
-    }
-  });
+    res.json({
+      status: 'success',
+      data: {
+        tours
+      }
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
 
 //================ Get Single tour =========================
