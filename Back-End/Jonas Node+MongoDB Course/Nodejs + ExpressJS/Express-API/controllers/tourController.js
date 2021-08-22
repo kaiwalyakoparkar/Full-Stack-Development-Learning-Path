@@ -20,16 +20,23 @@ exports.getAllTours = async (req, res) => {
 };
 
 //================ Get Single tour =========================
-exports.getSingleTour = (req, res) => {
-  const id = req.params.id * 1;
+exports.getSingleTour = async (req, res) => {
+  try {
+    const tour = await Tour.findById(req.params.id);
 
-  const tour = tours.find(ele => {
-    return ele.id === id;
-  });
-
-  res.status(200).send({
-    status: 'success'
-  });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        tour
+      }
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      log: 'Id not found',
+      message: err
+    });
+  }
 };
 
 //================ Add a new tour =========================
@@ -52,13 +59,24 @@ exports.addNewTour = async (req, res) => {
 };
 
 //================ Update a tour =========================
-exports.updateSingleTour = (req, res) => {
-  res.status(201).send({
-    status: 'success',
-    data: {
-      updatedTour
-    }
-  });
+exports.updateSingleTour = async (req, res) => {
+  try {
+    const updatedTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    });
+
+    res.status(201).send({
+      status: 'success',
+      data: {
+        updatedTour
+      }
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
 
 //================ Delete a tour =========================
