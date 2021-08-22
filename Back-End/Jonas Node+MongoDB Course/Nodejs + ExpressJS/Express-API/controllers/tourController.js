@@ -24,14 +24,24 @@ exports.getSingleTour = (req, res) => {
 //================ Add a new tour =========================
 exports.addNewTour = async (req, res) => {
 
-  cont newTour = await Tour.create(req.body);
+  try {
+    cont newTour = await Tour.create(req.body);
 
-  res.status(201).json({
-    status: 'success',
-    data: {
-      tour: newTour
-    }
-  });
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour: newTour
+      }
+    });
+  } catch(err) {
+
+    res.status(400).json({
+      status: "fail",
+      message: "Required fields not provided"
+    });
+
+  }
+  
 };
 
 //================ Update a tour =========================
