@@ -1,18 +1,5 @@
 const Tour = require('../models/tourModel.js');
 
-exports.checkBody = (req, res, next) => {
-  console.log('Checking if the name and price is defined correctly');
-
-  if (!req.body.name || !req.body.price) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'name or price cannot be undefined'
-    });
-  }
-
-  next();
-};
-
 //================ Get all tours =========================
 exports.getAllTours = (req, res) => {
   res.json({
@@ -35,9 +22,15 @@ exports.getSingleTour = (req, res) => {
 };
 
 //================ Add a new tour =========================
-exports.addNewTour = (req, res) => {
+exports.addNewTour = async (req, res) => {
+
+  cont newTour = await Tour.create(req.body);
+
   res.status(201).json({
-    status: 'success'
+    status: 'success',
+    data: {
+      tour: newTour
+    }
   });
 };
 
