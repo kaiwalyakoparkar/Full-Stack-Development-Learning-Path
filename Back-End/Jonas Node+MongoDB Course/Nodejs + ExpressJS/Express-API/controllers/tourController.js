@@ -1,62 +1,100 @@
 const Tour = require('../models/tourModel.js');
 
-exports.checkBody = (req, res, next) => {
-  console.log('Checking if the name and price is defined correctly');
+//================ Get all tours =========================
+exports.getAllTours = async (req, res) => {
+  try {
+    const tours = await Tour.find();
 
-  if (!req.body.name || !req.body.price) {
-    return res.status(404).json({
+    res.json({
+      status: 'success',
+      data: {
+        tours
+      }
+    });
+  } catch (err) {
+    res.status(400).json({
       status: 'fail',
-      message: 'name or price cannot be undefined'
+      message: err
     });
   }
-
-  next();
-};
-
-//================ Get all tours =========================
-exports.getAllTours = (req, res) => {
-  res.json({
-    status: 'success',
-    requestedAt: req.requestTime
-  });
 };
 
 //================ Get Single tour =========================
-exports.getSingleTour = (req, res) => {
-  const id = req.params.id * 1;
+exports.getSingleTour = async (req, res) => {
+  try {
+    const tour = await Tour.findById(req.params.id);
 
-  const tour = tours.find(ele => {
-    return ele.id === id;
-  });
-
-  res.status(200).send({
-    status: 'success'
-  });
+    res.status(200).json({
+      status: 'success',
+      data: {
+        tour
+      }
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'fail',
+      log: 'Id not found',
+      message: err
+    });
+  }
 };
 
 //================ Add a new tour =========================
-exports.addNewTour = (req, res) => {
-  res.status(201).json({
-    status: 'success'
-  });
+exports.addNewTour = async (req, res) => {
+  try {
+    const newTour = await Tour.create(req.body);
+
+    res.status(201).json({
+      status: 'success',
+      data: {
+        tour: newTour
+      }
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
 
 //================ Update a tour =========================
-exports.updateSingleTour = (req, res) => {
-  res.status(201).send({
-    status: 'success',
-    data: {
-      updatedTour
-    }
-  });
+exports.updateSingleTour = async (req, res) => {
+  try {
+    const updatedTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true
+    });
+
+    res.status(201).send({
+      status: 'success',
+      data: {
+        updatedTour
+      }
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
 
 //================ Delete a tour =========================
-exports.deleteSingleTour = (req, res) => {
-  res.status(204).send({
-    status: 'success',
-    data: null
-  });
+exports.deleteSingleTour = async (req, res) => {
+  try {
+    await Tour.findByIdAndDelete(req.params.id);
+
+    res.status(204).send({
+      status: 'success',
+      data: null
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
 };
 
 //========================= Importing data from JSON file==========================

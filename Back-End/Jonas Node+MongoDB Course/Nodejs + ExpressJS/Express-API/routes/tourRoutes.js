@@ -13,7 +13,9 @@ route.use(express.json());
 route
   .route('/') //Common route
   .get(tourController.getAllTours) //get operation on this route
-  .post(tourController.checkBody, tourController.addNewTour); //post operation on this route with chained middleware
+  .post(tourController.addNewTour);
+//Checks body while using JSON file for data
+// .post(tourController.checkBody, tourController.addNewTour); //post operation on this route with chained middleware
 
 route
   .route('/:id') //Common route
