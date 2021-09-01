@@ -3,9 +3,21 @@ const Tour = require('../models/tourModel.js');
 //================ Get all tours =========================
 exports.getAllTours = async (req, res) => {
   try {
-    // console.log(req.query); //Used for filetering in tours
+    //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
+    const queryObj = { ...req.query };
+    const excludedFields = ['page', 'limit', 'sort', 'fields'];
 
-    const tours = await Tour.find(req.query);
+    //Now we will loop over the excludedFields and remove the element from queryObject if it's present
+    excludedFields.forEach(el => {
+      delete queryObj[el];
+    });
+
+    //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
+    console.log(req.query, queryObj); //Used for filetering in tours
+
+    // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
+
+    const tours = await Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
 
     res.json({
       status: 'success',
