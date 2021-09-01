@@ -3,6 +3,7 @@ const Tour = require('../models/tourModel.js');
 //================ Get all tours =========================
 exports.getAllTours = async (req, res) => {
   try {
+    //BUILD QUERY
     //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
     const queryObj = { ...req.query };
     const excludedFields = ['page', 'limit', 'sort', 'fields'];
@@ -17,8 +18,12 @@ exports.getAllTours = async (req, res) => {
 
     // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
 
-    const tours = await Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
+    const query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
 
+    //EXECUTE QUERY
+    const tours = await query;
+
+    //SEND RESPONSE
     res.json({
       status: 'success',
       results: tours.length,
