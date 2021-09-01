@@ -9,6 +9,7 @@ exports.getAllTours = async (req, res) => {
 
     res.json({
       status: 'success',
+      results: tours.length,
       data: {
         tours
       }
