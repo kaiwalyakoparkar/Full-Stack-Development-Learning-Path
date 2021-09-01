@@ -3,6 +3,8 @@ const Tour = require('../models/tourModel.js');
 //================ Get all tours =========================
 exports.getAllTours = async (req, res) => {
   try {
+    console.log(req.query); //Used for filetering in tours
+
     const tours = await Tour.find();
 
     res.json({
