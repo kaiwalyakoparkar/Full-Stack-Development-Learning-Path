@@ -17,8 +17,12 @@ exports.getAllTours = async (req, res) => {
     console.log(req.query, queryObj); //Used for filetering in tours
 
     // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
+    let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
 
-    const query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
+    //Sorting the response
+    if (req.query.sort) {
+      query = query.sort(req.query.sort);
+    }
 
     //EXECUTE QUERY
     const tours = await query;
