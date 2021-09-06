@@ -46,7 +46,7 @@ exports.getAllTours = async (req, res) => {
 
     if (req.query.page) {
       const numTour = await Tour.countDouments();
-      if (skip > numTour) {
+      if (skip >= numTour) {
         throw new Error('Page does not exist');
       }
     }
