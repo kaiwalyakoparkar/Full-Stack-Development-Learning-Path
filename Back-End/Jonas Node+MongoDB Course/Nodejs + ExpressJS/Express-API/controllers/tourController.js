@@ -22,6 +22,16 @@ exports.getAllTours = async (req, res) => {
     //Sorting the response
     if (req.query.sort) {
       query = query.sort(req.query.sort);
+    } else {
+      query = query.sort('-createdAt;');
+    }
+
+    //Getting only the required field in response
+    if (req.query.fields) {
+      const field = req.query.fields.split(',').join(' ');
+      query = query.select(field);
+    } else {
+      query = query.select('-__v');
     }
 
     //EXECUTE QUERY
