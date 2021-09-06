@@ -19,6 +19,7 @@ exports.getAllTours = async (req, res) => {
     // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
     let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
 
+    //SORTING THE RESPONSE
     //Sorting the response
     if (req.query.sort) {
       query = query.sort(req.query.sort);
@@ -26,13 +27,22 @@ exports.getAllTours = async (req, res) => {
       query = query.sort('-createdAt;');
     }
 
+    //FILTERING ONLY REQUIRED FIELDS
     //Getting only the required field in response
+    //for http://localhost:300/api/v1/tours?fields=name,difficulty,duration we will make it 'name difficutly duration' for the query string
     if (req.query.fields) {
       const field = req.query.fields.split(',').join(' ');
       query = query.select(field);
     } else {
       query = query.select('-__v');
     }
+
+    //ADDING PAGINATION TO THE API
+    //Adding pagination to the api
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(limit);
 
     //EXECUTE QUERY
     const tours = await query;
