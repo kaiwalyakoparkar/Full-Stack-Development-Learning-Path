@@ -1,11 +1,14 @@
 const Tour = require('../models/tourModel.js');
 
-//================ Get all tours =========================
-exports.getAllTours = async (req, res) => {
-  try {
-    //BUILD QUERY
-    //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
-    const queryObj = { ...req.query };
+//=============== Class ================
+class APIfeatures {
+  constructor(query, queryString) {
+    this.query = query;
+    this.queryString = queryString;
+  }
+
+  filter() {
+    const queryObj = { ...this.queryString };
     const excludedFields = ['page', 'limit', 'sort', 'fields'];
 
     //Now we will loop over the excludedFields and remove the element from queryObject if it's present
@@ -16,8 +19,28 @@ exports.getAllTours = async (req, res) => {
     //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
     console.log(req.query, queryObj); //Used for filetering in tours
 
-    // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
-    let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
+    this.query = this.query.find(JSON.parse(queryStr));
+  }
+}
+
+//================ Get all tours =========================
+exports.getAllTours = async (req, res) => {
+  try {
+    //BUILD QUERY
+    //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
+    // const queryObj = { ...req.query };
+    // const excludedFields = ['page', 'limit', 'sort', 'fields'];
+
+    // //Now we will loop over the excludedFields and remove the element from queryObject if it's present
+    // excludedFields.forEach(el => {
+    //   delete queryObj[el];
+    // });
+
+    // //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
+    // console.log(req.query, queryObj); //Used for filetering in tours
+
+    // // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
+    // let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
 
     //SORTING THE RESPONSE
     //Sorting the response
@@ -52,7 +75,8 @@ exports.getAllTours = async (req, res) => {
     }
 
     //EXECUTE QUERY
-    const tours = await query;
+    const features = new APIfeatures(Tour.find(), req.query).filter();
+    const tours = await features.query;
 
     //SEND RESPONSE
     res.json({
