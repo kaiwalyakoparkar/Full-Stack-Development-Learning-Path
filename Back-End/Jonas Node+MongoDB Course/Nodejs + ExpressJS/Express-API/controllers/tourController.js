@@ -44,6 +44,15 @@ class APIfeatures {
 
     return this;
   }
+
+  pagination() {
+    const page = this.queryString.page * 1 || 1;
+    const limit = this.queryString.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+    this.query = this.query.skip(skip).limit(limit);
+
+    return this;
+  }
 }
 
 //================ Get all tours =========================
@@ -101,7 +110,8 @@ exports.getAllTours = async (req, res) => {
     const features = new APIfeatures(Tour.find(), req.query)
       .filter()
       .sort()
-      .limitFields();
+      .limitFields()
+      .pagination();
     const tours = await features.query;
 
     //SEND RESPONSE
