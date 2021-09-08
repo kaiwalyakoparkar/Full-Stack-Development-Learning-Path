@@ -33,6 +33,17 @@ class APIfeatures {
 
     return this;
   }
+
+  limitFields() {
+    if (this.queryString.fields) {
+      const field = this.queryString.fields.split(',').join(' ');
+      this.query = this.query.select(field);
+    } else {
+      this.query = this.query.select('-__v');
+    }
+
+    return this;
+  }
 }
 
 //================ Get all tours =========================
@@ -87,7 +98,10 @@ exports.getAllTours = async (req, res) => {
     // }
 
     //EXECUTE QUERY
-    const features = new APIfeatures(Tour.find(), req.query).filter().sort();
+    const features = new APIfeatures(Tour.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields();
     const tours = await features.query;
 
     //SEND RESPONSE
