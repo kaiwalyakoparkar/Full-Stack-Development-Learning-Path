@@ -1,11 +1,14 @@
 const Tour = require('../models/tourModel.js');
 
-//================ Get all tours =========================
-exports.getAllTours = async (req, res) => {
-  try {
-    //BUILD QUERY
-    //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
-    const queryObj = { ...req.query };
+//=============== Class ================
+class APIfeatures {
+  constructor(query, queryString) {
+    this.query = query;
+    this.queryString = queryString;
+  }
+
+  filter() {
+    const queryObj = { ...this.queryString };
     const excludedFields = ['page', 'limit', 'sort', 'fields'];
 
     //Now we will loop over the excludedFields and remove the element from queryObject if it's present
@@ -16,43 +19,100 @@ exports.getAllTours = async (req, res) => {
     //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
     console.log(req.query, queryObj); //Used for filetering in tours
 
-    // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
-    let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
+    this.query = this.query.find(JSON.parse(queryStr));
 
-    //SORTING THE RESPONSE
-    //Sorting the response
-    if (req.query.sort) {
-      query = query.sort(req.query.sort);
+    return this;
+  }
+
+  sort() {
+    if (this.queryString.sort) {
+      this.query = this.query.sort(this.queryString.sort);
     } else {
-      query = query.sort('-createdAt;');
+      this.query = this.query.sort('-createdAt;');
     }
 
-    //FILTERING ONLY REQUIRED FIELDS
+    return this;
+  }
+
+  limitFields() {
+    if (this.queryString.fields) {
+      const field = this.queryString.fields.split(',').join(' ');
+      this.query = this.query.select(field);
+    } else {
+      this.query = this.query.select('-__v');
+    }
+
+    return this;
+  }
+
+  pagination() {
+    const page = this.queryString.page * 1 || 1;
+    const limit = this.queryString.limit * 1 || 100;
+    const skip = (page - 1) * limit;
+    this.query = this.query.skip(skip).limit(limit);
+
+    return this;
+  }
+}
+
+//================ Get all tours =========================
+exports.getAllTours = async (req, res) => {
+  try {
+    //BUILD QUERY (Shifted to the class)
+    //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
+    // const queryObj = { ...req.query };
+    // const excludedFields = ['page', 'limit', 'sort', 'fields'];
+
+    // //Now we will loop over the excludedFields and remove the element from queryObject if it's present
+    // excludedFields.forEach(el => {
+    //   delete queryObj[el];
+    // });
+
+    // //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
+    // console.log(req.query, queryObj); //Used for filetering in tours
+
+    // // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
+    // let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
+
+    //SORTING THE RESPONSE (Shifted to the class)
+    //Sorting the response
+    // if (req.query.sort) {
+    //   query = query.sort(req.query.sort);
+    // } else {
+    //   query = query.sort('-createdAt;');
+    // }
+
+    //FILTERING ONLY REQUIRED FIELDS (Shifted to the class)
     //Getting only the required field in response
     //for http://localhost:300/api/v1/tours?fields=name,difficulty,duration we will make it 'name difficutly duration' for the query string
-    if (req.query.fields) {
-      const field = req.query.fields.split(',').join(' ');
-      query = query.select(field);
-    } else {
-      query = query.select('-__v');
-    }
+    // if (req.query.fields) {
+    //   const field = req.query.fields.split(',').join(' ');
+    //   query = query.select(field);
+    // } else {
+    //   query = query.select('-__v');
+    // }
 
-    //ADDING PAGINATION TO THE API
+    //ADDING PAGINATION TO THE API (Shifted to the class)
     //Adding pagination to the api
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 100;
-    const skip = (page - 1) * limit;
-    query = query.skip(skip).limit(limit);
+    // const page = req.query.page * 1 || 1;
+    // const limit = req.query.limit * 1 || 100;
+    // const skip = (page - 1) * limit;
+    // query = query.skip(skip).limit(limit);
 
-    if (req.query.page) {
-      const numTour = await Tour.countDouments();
-      if (skip >= numTour) {
-        throw new Error('Page does not exist');
-      }
-    }
+    // if (req.query.page) {
+    //   const numTour = await Tour.countDouments();
+    //   if (skip >= numTour) {
+    //     throw new Error('Page does not exist');
+    //   }
+    // }
 
     //EXECUTE QUERY
-    const tours = await query;
+    const features = new APIfeatures(Tour.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .pagination();
+    const tours = await features.query;
 
     //SEND RESPONSE
     res.json({
