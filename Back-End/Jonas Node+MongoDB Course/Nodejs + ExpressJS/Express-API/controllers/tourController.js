@@ -20,13 +20,25 @@ class APIfeatures {
     console.log(req.query, queryObj); //Used for filetering in tours
 
     this.query = this.query.find(JSON.parse(queryStr));
+
+    return this;
+  }
+
+  sort() {
+    if (this.queryString.sort) {
+      this.query = this.query.sort(this.queryString.sort);
+    } else {
+      this.query = this.query.sort('-createdAt;');
+    }
+
+    return this;
   }
 }
 
 //================ Get all tours =========================
 exports.getAllTours = async (req, res) => {
   try {
-    //BUILD QUERY
+    //BUILD QUERY (Shifted to the class)
     //we might have done queryObj = req.query but updating queryObj would have updated req.query as well so we made a new object
     // const queryObj = { ...req.query };
     // const excludedFields = ['page', 'limit', 'sort', 'fields'];
@@ -42,40 +54,40 @@ exports.getAllTours = async (req, res) => {
     // // const tours = await Tour.find(req.query);//we used it when we wanted to filter with all the fields
     // let query = Tour.find(queryObj); //Now as we don't want to filter through all the query parameter we are using them
 
-    //SORTING THE RESPONSE
+    //SORTING THE RESPONSE (Shifted to the class)
     //Sorting the response
-    if (req.query.sort) {
-      query = query.sort(req.query.sort);
-    } else {
-      query = query.sort('-createdAt;');
-    }
+    // if (req.query.sort) {
+    //   query = query.sort(req.query.sort);
+    // } else {
+    //   query = query.sort('-createdAt;');
+    // }
 
-    //FILTERING ONLY REQUIRED FIELDS
+    //FILTERING ONLY REQUIRED FIELDS (Shifted to the class)
     //Getting only the required field in response
     //for http://localhost:300/api/v1/tours?fields=name,difficulty,duration we will make it 'name difficutly duration' for the query string
-    if (req.query.fields) {
-      const field = req.query.fields.split(',').join(' ');
-      query = query.select(field);
-    } else {
-      query = query.select('-__v');
-    }
+    // if (req.query.fields) {
+    //   const field = req.query.fields.split(',').join(' ');
+    //   query = query.select(field);
+    // } else {
+    //   query = query.select('-__v');
+    // }
 
-    //ADDING PAGINATION TO THE API
+    //ADDING PAGINATION TO THE API (Shifted to the class)
     //Adding pagination to the api
-    const page = req.query.page * 1 || 1;
-    const limit = req.query.limit * 1 || 100;
-    const skip = (page - 1) * limit;
-    query = query.skip(skip).limit(limit);
+    // const page = req.query.page * 1 || 1;
+    // const limit = req.query.limit * 1 || 100;
+    // const skip = (page - 1) * limit;
+    // query = query.skip(skip).limit(limit);
 
-    if (req.query.page) {
-      const numTour = await Tour.countDouments();
-      if (skip >= numTour) {
-        throw new Error('Page does not exist');
-      }
-    }
+    // if (req.query.page) {
+    //   const numTour = await Tour.countDouments();
+    //   if (skip >= numTour) {
+    //     throw new Error('Page does not exist');
+    //   }
+    // }
 
     //EXECUTE QUERY
-    const features = new APIfeatures(Tour.find(), req.query).filter();
+    const features = new APIfeatures(Tour.find(), req.query).filter().sort();
     const tours = await features.query;
 
     //SEND RESPONSE
