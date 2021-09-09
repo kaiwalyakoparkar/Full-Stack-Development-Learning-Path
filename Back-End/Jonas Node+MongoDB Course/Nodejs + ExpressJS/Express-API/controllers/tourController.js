@@ -7,22 +7,22 @@ class APIfeatures {
     this.queryString = queryString;
   }
 
-  // filter() {
-  //   const queryObj = { ...this.queryString };
-  //   const excludedFields = ['page', 'limit', 'sort', 'fields'];
+  filter() {
+    const queryObj = { ...this.queryString };
+    const excludedFields = ['page', 'limit', 'sort', 'fields'];
 
-  //   //Now we will loop over the excludedFields and remove the element from queryObject if it's present
-  //   excludedFields.forEach(el => {
-  //     delete queryObj[el];
-  //   });
+    //Now we will loop over the excludedFields and remove the element from queryObject if it's present
+    excludedFields.forEach(el => {
+      delete queryObj[el];
+    });
 
-  //   //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
-  //   console.log(this.queryString, queryObj); //Used for filetering in tours
+    //we get req.query as original and then we remove the fields added in excluded and get new object as queryObj which we use for quering
+    console.log(this.queryString, queryObj); //Used for filetering in tours
 
-  //   this.query = this.query.find(queryObj);
+    this.query = this.query.find(queryObj);
 
-  //   return this;
-  // }
+    return this;
+  }
 
   sort() {
     if (this.queryString.sort) {
