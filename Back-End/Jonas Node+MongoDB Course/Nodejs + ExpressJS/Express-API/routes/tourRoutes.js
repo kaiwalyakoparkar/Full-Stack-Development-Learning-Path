@@ -17,6 +17,8 @@ route
 //Checks body while using JSON file for data
 // .post(tourController.checkBody, tourController.addNewTour); //post operation on this route with chained middleware
 
+route.route('/tours-stats').get(tourController.getToursStats);
+
 route
   .route('/:id') //Common route
   .get(tourController.getSingleTour) //get operation on this route

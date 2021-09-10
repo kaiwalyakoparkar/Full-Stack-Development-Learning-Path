@@ -154,6 +154,45 @@ exports.deleteSingleTour = async (req, res) => {
   }
 };
 
+//======== AGGREGATION PIPELINE ADDED =============
+
+//Take a look at docs here: https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/
+exports.getToursStats = async (req, res) => {
+  try {
+    const stats = await Tour.aggregate([
+      {
+        $match: {
+          ratingAverage: { $gte: 4.5 }
+        }
+      },
+      {
+        $group: {
+          _id: '$difficulty',
+          numTours: { $sum: 1 },
+          numRatings: { $sum: '$ratingQuantity' },
+          averageRating: { $avg: '$ratingAverage' },
+          averagePrice: { $avg: '$price' },
+          maxPrice: { $max: '$price' },
+          minPrice: { $max: '$price' }
+        }
+      }
+    ]);
+
+    res.json({
+      status: 'success',
+      results: stats.length,
+      data: {
+        stats
+      }
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err
+    });
+  }
+};
+
 //========================= Importing data from JSON file==========================
 
 // const fs = require('fs');
