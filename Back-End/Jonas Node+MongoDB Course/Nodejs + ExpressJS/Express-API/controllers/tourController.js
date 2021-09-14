@@ -175,7 +175,15 @@ exports.getToursStats = async (req, res) => {
           maxPrice: { $max: '$price' },
           minPrice: { $max: '$price' }
         }
+      },
+      {
+        $sort: {averagePrice: 1}
       }
+
+      //This will exclude the matching results
+      // {
+      //   $match: {_id: {$ne: 'easy'}}
+      // }
     ]);
 
     res.json({
