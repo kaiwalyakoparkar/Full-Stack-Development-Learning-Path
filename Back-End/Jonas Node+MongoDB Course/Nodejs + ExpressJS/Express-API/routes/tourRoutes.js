@@ -19,6 +19,8 @@ route
 
 route.route('/tours-stats').get(tourController.getToursStats);
 
+route.route('/monthly-plan/:year').get(tourController.getMonthlyPlan);
+
 route
   .route('/:id') //Common route
   .get(tourController.getSingleTour) //get operation on this route
