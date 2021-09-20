@@ -72,8 +72,9 @@ tourSchema.virtual('durationWeeks').get(function() {
   return this.duration / 7;
 })
 
-//DOCUMENT MIDDLEWARE runs before .save() and .create()
-//Pre-Save-hook / pre middleware 
+//================== DOCUMENT MIDDLEWARE  ========================
+
+//Pre-Save-hook / pre middleware runs before .save() and .create()
 tourSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true});
   next();
@@ -89,11 +90,18 @@ tourSchema.pre('save', function(next) {
 //   next();
 // });
 
-// QUERY MIDDLEWARE 
+//=================== QUERY MIDDLEWARE  =====================
 
 // tourSchema.pre('find', function(next) { //Will only run for .find()
 tourSchema.pre(/^find/, function(next) { //Will run for .find() .findOne() .findById() etc (any query starting with find)
   this.find({secretTour: {$ne: true}});
+  next();
+});
+
+//==================== AGGREGATION MIDDLEWARE ===============
+
+tourSchema.pre('aggregate', function(next) {
+  this.pipeline().unshift({$match: {secretTour: {$ne: true}}});
   next();
 });
 
