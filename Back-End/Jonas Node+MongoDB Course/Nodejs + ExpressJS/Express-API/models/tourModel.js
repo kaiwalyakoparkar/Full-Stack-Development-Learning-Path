@@ -56,7 +56,11 @@ const tourSchema = new mongoose.Schema({
     type: Date,
     default: Date.now()
   },
-  startDates: [Date]
+  startDates: [Date],
+  secretTour: {
+    type: Boolean,
+    default: false
+  }
 },
 {
   toJSON: {virtuals: true},
@@ -84,6 +88,14 @@ tourSchema.pre('save', function(next) {
 //   console.log(doc);
 //   next();
 // });
+
+// QUERY MIDDLEWARE 
+
+// tourSchema.pre('find', function(next) { //Will only run for .find()
+tourSchema.pre(/^find/, function(next) { //Will run for .find() .findOne() .findById() etc (any query starting with find)
+  this.find({secretTour: {$ne: true}});
+  next();
+});
 
 //Creating model out of the tours schema
 const Tour = mongoose.model('Tour', tourSchema);
