@@ -1,11 +1,18 @@
 const mongoose = require('mongoose');
 const slugify = require('slugify');
+const validator = require('validator');
 
 //Created a tours schema
 const tourSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Tour should have a name'],
+    unique: true,
+    validate: [validator.isAlpha, 'The name for the tour should be Aplhabetical only']
+  },
+  slug: {
+    type: String,
+    require: [true, 'Tour must have a slug'],
     unique: true
   },
   slug: {
@@ -37,7 +44,16 @@ const tourSchema = new mongoose.Schema({
     type: Number,
     required: [true, 'Tour should have a price']
   },
-  priceDiscount: Number,
+  priceDiscount: {
+    type: Number,
+    //This is a custom validator 
+    validate: {
+      validator: function(val) {
+        return val < this.price;
+      },
+      message: 'Discount price {{VALUE}} should be below regular price'
+    }
+  },
   summary: {
     type: String,
     required: [true, 'Tour should have a Summary'],
