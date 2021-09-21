@@ -15,6 +15,11 @@ const tourSchema = new mongoose.Schema({
     require: [true, 'Tour must have a slug'],
     unique: true
   },
+  slug: {
+    type: String,
+    require: [true, 'Tour must have a slug'],
+    unique: true
+  },
   duration: {
     type: Number,
     required: [true, 'A tour must have a duration']
