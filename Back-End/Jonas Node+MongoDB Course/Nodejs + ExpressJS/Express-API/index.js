@@ -25,5 +25,14 @@ app.use(express.static(path.join(__dirname+'/public')));
 app.use('/api/v1/tours', tourRoute);
 app.use('/api/v1/users', userRoute);
 
+//Error handling if no route is catched (This block of code should be always at last of route handling else it will throw this error for each and every request we make)
+app.all('*', (req, res, next) => {
+  res.status(404).json({
+    status: 'fail',
+    message: `${req.originalUrl} was not found on the server. Please check the Url :)`
+  });
+  next();
+});
+
 //================= Starting the server==============
 module.exports = app;
