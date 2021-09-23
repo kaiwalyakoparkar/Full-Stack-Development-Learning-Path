@@ -6,6 +6,7 @@ const app = express();
 const tourRoute = require(path.join(__dirname, './routes/tourRoutes.js'));
 const userRoute = require(path.join(__dirname, './routes/userRoutes.js'));
 
+const globalErrorHandler = require(path.join(__dirname,'./controllers/errorController.js'));
 const appError = require(path.join(__dirname, './utils/appError.js'));
 
 //My custom middleware
@@ -53,19 +54,22 @@ app.all('*', (req, res, next) => {
 });
 
 //Global Error handling middleware
-app.use((err, req, res, next) => {
+app.use(globalErrorHandler);//using via controller
 
-  // console.log(err.stack);
+//previour interationof global error handling middleware
+// app.use((err, req, res, next) => {
 
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || 'err';
+//   // console.log(err.stack);
 
-  res.status(err.statusCode).json({
-    status: err.status,
-    message: err.message
-  });
-  next();
-});
+//   err.statusCode = err.statusCode || 500;
+//   err.status = err.status || 'err';
+
+//   res.status(err.statusCode).json({
+//     status: err.status,
+//     message: err.message
+//   });
+//   next();
+// });
 
 //================= Starting the server==============
 module.exports = app;
