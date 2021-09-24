@@ -3,7 +3,7 @@ const APIfeatures = require('../utils/appFeatures.js');
 const catchAsync = require('../utils/catchAsync.js');
 
 //================ Get all tours =========================
-exports.getAllTours = catchAsync(async (req, res) => {
+exports.getAllTours = catchAsync(async (req, res, next) => {
 
   const features = new APIfeatures(Tour.find(), req.query)
     .sort()
@@ -95,7 +95,7 @@ exports.getAllTours = catchAsync(async (req, res) => {
 });
 
 //================ Get Single tour =========================
-exports.getSingleTour = catchAsync(async (req, res) => {
+exports.getSingleTour = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.id);
 
   res.status(200).json({
@@ -154,7 +154,7 @@ exports.addNewTour = catchAsync(async (req, res, next) => {
 });
 
 //================ Update a tour =========================
-exports.updateSingleTour = catchAsync(async (req, res) => {
+exports.updateSingleTour = catchAsync(async (req, res, next) => {
   const updatedTour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true
@@ -188,7 +188,7 @@ exports.updateSingleTour = catchAsync(async (req, res) => {
 });
 
 //================ Delete a tour =========================
-exports.deleteSingleTour = catchAsync(async (req, res) => {
+exports.deleteSingleTour = catchAsync(async (req, res,next) => {
   await Tour.findByIdAndDelete(req.params.id);
 
   res.status(204).send({
@@ -215,7 +215,7 @@ exports.deleteSingleTour = catchAsync(async (req, res) => {
 //======== AGGREGATION PIPELINE ADDED =============
 
 //Take a look at docs here: https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/
-exports.getToursStats = catchAsync(async (req, res) => {
+exports.getToursStats = catchAsync(async (req, res, next) => {
   const stats = await Tour.aggregate([
       {
         $match: {
@@ -291,7 +291,7 @@ exports.getToursStats = catchAsync(async (req, res) => {
   // }
 });
 
-exports.getMonthlyPlan = catchAsync(async (req, res) => {
+exports.getMonthlyPlan = catchAsync(async (req, res, next) => {
   const year = req.params.year * 1;
 
   const plan = await Tour.aggregate([
@@ -337,7 +337,7 @@ exports.getMonthlyPlan = catchAsync(async (req, res) => {
       plan
     }
   });
-    
+
   //First Iteration
   // try {
   //   const year = req.params.year * 1;
