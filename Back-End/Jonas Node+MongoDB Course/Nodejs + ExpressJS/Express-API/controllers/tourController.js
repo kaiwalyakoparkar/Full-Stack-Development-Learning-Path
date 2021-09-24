@@ -1,5 +1,6 @@
 const Tour = require('../models/tourModel.js');
 const APIfeatures = require('../utils/appFeatures.js');
+const catchAsync = require('../utils/catchAsync.js');
 
 //================ Get all tours =========================
 exports.getAllTours = async (req, res) => {
@@ -94,13 +95,6 @@ exports.getSingleTour = async (req, res) => {
       message: err
     });
   }
-};
-
-//================ Handling Async errors =================
-const catchAsync = fu => {
-  return (req, res, next) => {
-    fu(req, res, next).catch(err => next(err));
-  };
 };
 
 //================ Add a new tour =========================
