@@ -50,7 +50,7 @@ app.all('*', (req, res, next) => {
 
   //Iteration 3 (final iteration)
   //Using the newly created appError class to reduce redundant creation of error handling code
-  next(new appError(`${req.originalUrl} was not found on the server. Please check the Url :)`));
+  next(new appError(`${req.originalUrl} was not found on the server. Please check the Url :D`));
 });
 
 //Global Error handling middleware

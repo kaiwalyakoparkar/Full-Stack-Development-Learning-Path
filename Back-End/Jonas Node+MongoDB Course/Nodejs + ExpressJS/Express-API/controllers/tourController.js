@@ -96,24 +96,42 @@ exports.getSingleTour = async (req, res) => {
   }
 };
 
-//================ Add a new tour =========================
-exports.addNewTour = async (req, res) => {
-  try {
-    const newTour = await Tour.create(req.body);
-
-    res.status(201).json({
-      status: 'success',
-      data: {
-        tour: newTour
-      }
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: 'fail',
-      message: err
-    });
+//================ Handling Asynce errors =================
+const catchAsysnc = fu => {
+  return (req, res, next) => {
+    fu(req, res, next).catch(err => next(err));
   }
-};
+}
+
+//================ Add a new tour =========================
+exports.addNewTour = catchAsysnc(async (req, res, next) => {
+  
+  const newTour = await Tour.create(req.body);
+
+  res.status(201).json({
+    status: 'success',
+    data: {
+      tour: newTour
+    }
+  });
+
+  //=== ERROR HANDLING (Iteration 1) ===
+  // try {
+  //   const newTour = await Tour.create(req.body);
+
+  //   res.status(201).json({
+  //     status: 'success',
+  //     data: {
+  //       tour: newTour
+  //     }
+  //   });
+  // } catch (err) {
+  //   res.status(400).json({
+  //     status: 'fail',
+  //     message: err
+  //   });
+  // }
+});
 
 //================ Update a tour =========================
 exports.updateSingleTour = async (req, res) => {
