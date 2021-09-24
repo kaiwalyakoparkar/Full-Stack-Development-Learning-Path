@@ -96,16 +96,15 @@ exports.getSingleTour = async (req, res) => {
   }
 };
 
-//================ Handling Asynce errors =================
-const catchAsysnc = fu => {
+//================ Handling Async errors =================
+const catchAsync = fu => {
   return (req, res, next) => {
     fu(req, res, next).catch(err => next(err));
-  }
-}
+  };
+};
 
 //================ Add a new tour =========================
-exports.addNewTour = catchAsysnc(async (req, res, next) => {
-  
+exports.addNewTour = catchAsync(async (req, res, next) => {
   const newTour = await Tour.create(req.body);
 
   res.status(201).json({
@@ -195,7 +194,7 @@ exports.getToursStats = async (req, res) => {
         }
       },
       {
-        $sort: {averagePrice: 1}
+        $sort: { averagePrice: 1 }
       }
 
       //This will exclude the matching results
@@ -221,11 +220,11 @@ exports.getToursStats = async (req, res) => {
 
 exports.getMonthlyPlan = async (req, res) => {
   try {
-    const year = req.params.year*1;
+    const year = req.params.year * 1;
 
     const plan = await Tour.aggregate([
       {
-       $unwind: '$startDates'
+        $unwind: '$startDates'
       },
       {
         $match: {
@@ -234,16 +233,16 @@ exports.getMonthlyPlan = async (req, res) => {
             $lte: new Date(`${year}-12-31`)
           }
         }
-      }, 
+      },
       {
         $group: {
-          _id: { $month: '$startDates'},
-          numTourStarts: { $sum: 1},
-          tour: {$push: '$name'}
+          _id: { $month: '$startDates' },
+          numTourStarts: { $sum: 1 },
+          tour: { $push: '$name' }
         }
       },
       {
-        $addFields: {month: '$_id'} //Adds additional field at the end of the object
+        $addFields: { month: '$_id' } //Adds additional field at the end of the object
       },
       {
         $project: {
@@ -251,7 +250,7 @@ exports.getMonthlyPlan = async (req, res) => {
         }
       },
       {
-        $sort: { numTourStarts: -1} //This sorts in descending order
+        $sort: { numTourStarts: -1 } //This sorts in descending order
         // $sort: { numTourStarts: 1} This sorts in ascending order
       },
       {
@@ -272,7 +271,7 @@ exports.getMonthlyPlan = async (req, res) => {
       message: err
     });
   }
-}
+};
 
 //========================= Importing data from JSON file==========================
 
