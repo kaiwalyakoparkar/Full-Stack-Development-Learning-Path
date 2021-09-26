@@ -6,6 +6,11 @@ const handleCastErrorDB = (err) => {
   return new AppError(message, 400);
 }
 
+const handleDuplicateNameDB = (err) => {
+  const message = `Tour with ${err.keyValue.name} name already exists in database`;
+  return new AppError(message, 400);
+}
+
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
     status: err.status,
@@ -49,7 +54,11 @@ module.exports = (err, req, res, next) => {
   } else if(process.env.NODE_ENV === 'production') {
     let error = err;
 
+    //If Invalid id provided as "/:id" argument
     if(error.name === 'CastError') error = handleCastErrorDB(error);
+    
+    //If the tour name already exists in database
+    if(error.code === 11000) error = handleDuplicateNameDB(error);
 
     sendErrorProd(error, res);
   }
