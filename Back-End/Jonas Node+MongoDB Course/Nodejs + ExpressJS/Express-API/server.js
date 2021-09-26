@@ -9,6 +9,8 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
+console.log('✅ Application started')
+
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
@@ -19,9 +21,22 @@ mongoose
   // .then((con) => {//for seeing more info
   .then(() => {
     // console.log(con.connection);//to see more info about the connection
-    console.log('MongoDB connected successfully');
+    console.log('✅ MongoDB connected successfully 👍🎉');
   });
 
-app.listen(port, () => {
-  console.log(`Server started on http://localhost:${port}`);
+// app.listen(port, () => {
+//   console.log(`Server started on http://localhost:${port}`);
+// });
+
+const server = app.listen(port, () => {
+  console.log(`✅ Server started on http://localhost:${port} 👈`);
+});
+
+process.on('unhandledRejection', err => {
+  console.log(err.name, err.message);
+  console.log('Unhandled Error Detected! 💥 Closing down the application...');
+
+  server.close(() => {
+    process.exit(1);
+  })
 });
