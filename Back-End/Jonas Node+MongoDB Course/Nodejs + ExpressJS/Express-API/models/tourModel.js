@@ -7,8 +7,7 @@ const tourSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Tour should have a name'],
-    unique: true,
-    validate: [validator.isAlpha, 'The name for the tour should be Aplhabetical only']
+    unique: true
   },
   slug: {
     type: String,
@@ -30,7 +29,11 @@ const tourSchema = new mongoose.Schema({
   },
   difficulty: {
     type: String,
-    required: [true, 'Tour should have a difficulty']
+    required: [true, 'Tour should have a difficulty'],
+    enum: {
+      values: ['easy', 'medium', 'difficult'],
+      message: 'Difficutly is either: easy, medium or difficult'
+    }
   },
   ratingAverage: {
     type: Number,
