@@ -9,7 +9,8 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-console.log('✅ Application started')
+console.log('✅ Application started');
+console.log(`✅ Running ${process.env.NODE_ENV} server`);
 
 mongoose
   .connect(DB, {
