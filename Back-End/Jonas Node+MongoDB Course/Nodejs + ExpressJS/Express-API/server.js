@@ -14,9 +14,7 @@ console.log(`✅ Running ${process.env.NODE_ENV} server`);
 
 mongoose
   .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
+    useNewUrlParser: true,             // After mongoose version 5.7.1 release
     useUnifiedTopology: true
   })
   // .then((con) => {//for seeing more info
