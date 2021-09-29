@@ -65,3 +65,18 @@ exports.login = catchAsync(async (req, res, next) => {
 		token
 	})
 });
+
+exports.protect = catchAsync(async (req, res, next) => {
+
+	let token;
+	//Check if the token is provided by the user while requesting
+	if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+		token = req.headers.authorization.split(' ')[1];
+	};
+
+	if(!token) {
+		return next(new AppError('It seems that you are not logged in. Please login to be able to perform this operation', 401));
+	}
+
+	next();
+});
