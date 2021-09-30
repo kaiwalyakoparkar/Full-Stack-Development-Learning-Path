@@ -33,7 +33,8 @@ const userSchema = new mongoose.Schema({
 			},
 			message: 'Your passwords does not match'
 		}
-	}
+	},
+	passwordChangedAt: Date
 });
 
 //Document middleware to hash the passwords before they are getting updated or saved
@@ -50,6 +51,18 @@ userSchema.pre('save', async function (next) {
 
 userSchema.methods.correctPassword = async function (enteredPassword, databasePassword) {
 	return await bcrypt.compare(enteredPassword, databasePassword);
+}
+
+userSchema.methods.passwordChangedAfter = function(tokenTimestamp) {
+	if(this.passwordChangedAt) {
+
+		const changedTimeStamp = parseInt(this.passwordChangedAt.getTime()/1000,10);
+		
+		console.log(tokenTimestamp, this.passwordChangedAt);
+		return tokenTimestamp < changedTimeStamp;
+	}
+
+	return false;
 }
 
 const User = mongoose.model('User', userSchema);

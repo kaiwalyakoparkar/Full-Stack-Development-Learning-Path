@@ -18,6 +18,16 @@ const handleValidationErrorDB = (err) => {
   return new AppError(message, 400);
 }
 
+const handleIncorrectToken = (err) => {
+  const message = 'Incorrect token please recheck or regenerate the token';
+  return new AppError(message, 400);
+}
+
+const handleExpiredToken = (err) => {
+  const message = 'Token has expired. Please loging again';
+  return new AppError(message, 400);
+}
+
 //=============== Error Responses for Dev & Prod Environments ============
 const sendErrorDev = (err, res) => {
   res.status(err.statusCode).json({
@@ -75,6 +85,12 @@ module.exports = (err, req, res, next) => {
 
     //If the validation in mongoose model fails
     if(error.name === 'ValidationError') error = handleValidationErrorDB(error);
+
+    //If the Token is incorrect
+    if(error.name === 'JsonWebTokenError') error = handleIncorrectToken(error);
+
+    //If the token is timedout
+    if(error.name === 'TokenExpiredError') error = handleExpiredToken(error);
 
     sendErrorProd(error, res);
   }

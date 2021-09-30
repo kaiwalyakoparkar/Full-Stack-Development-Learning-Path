@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const util = require('util');
 
 const User = require('../models/userModel.js');
 const catchAsync = require('../utils/catchAsync.js');
@@ -74,9 +75,27 @@ exports.protect = catchAsync(async (req, res, next) => {
 		token = req.headers.authorization.split(' ')[1];
 	};
 
+	//If the token not found that means the user is not logged in
 	if(!token) {
 		return next(new AppError('It seems that you are not logged in. Please login to be able to perform this operation', 401));
 	}
 
+	//Check if the token is valid
+	const decoded = await util.promisify(jwt.verify)(token, process.env.JWT_SECRET_KEY)
+	console.log(decoded);//stopped on timestamp 3:18 mins
+
+	//If the user exists
+	const currentUser = await User.findById(decoded.id);
+	if(!currentUser) {
+		return next(new AppError('User to which this token was issued no more exists', 401));
+	}
+
+	//If password was not changed after the token was issued
+	if(console.log(currentUser.passwordChangedAfter(decoded.iat))) {
+		return next(new AppError('User has changed their password hence this token is no more valid', 401));
+	};
+
+	//If it reaches here means everything went correct and we can grant access to the protected route
+	req.user = currentUser;
 	next();
 });
