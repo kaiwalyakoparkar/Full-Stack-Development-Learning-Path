@@ -26,6 +26,6 @@ route
   .route('/:id') //Common route
   .get(authController.protect,tourController.getSingleTour) //get operation on this route
   .patch(authController.protect,tourController.updateSingleTour) //patch operation on this route
-  .delete(authController.protect,tourController.deleteSingleTour); //delte operation on this route
+  .delete(authController.protect, authController.restrictTo('admin','lead-guide') ,tourController.deleteSingleTour); //delte operation on this route
 
 module.exports = route;

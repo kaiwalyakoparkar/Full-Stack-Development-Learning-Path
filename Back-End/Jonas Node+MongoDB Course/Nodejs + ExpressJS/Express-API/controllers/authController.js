@@ -17,7 +17,8 @@ exports.signup = catchAsync(async(req, res, next) => {
 		name: req.body.name,
 		email: req.body.email,
 		password: req.body.password,
-		passConfirm: req.body.passConfirm
+		passConfirm: req.body.passConfirm,
+		role: req.body.role
 	});
 
 	
@@ -91,7 +92,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 	}
 
 	//If password was not changed after the token was issued
-	if(console.log(currentUser.passwordChangedAfter(decoded.iat))) {
+	if(currentUser.passwordChangedAfter(decoded.iat)) {
 		return next(new AppError('User has changed their password hence this token is no more valid', 401));
 	};
 
@@ -99,3 +100,13 @@ exports.protect = catchAsync(async (req, res, next) => {
 	req.user = currentUser;
 	next();
 });
+
+exports.restrictTo = function (...roles) {
+	return (req, res, next) => {
+		//roles ['admin', 'lead-guide'] :: role = 'user'
+		if(!roles.includes(req.user.role)) {
+			return next(new AppError('You do not have permission to perform this action', 403));
+		}
+		next();
+	}
+}
