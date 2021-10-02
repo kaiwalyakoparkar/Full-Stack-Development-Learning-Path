@@ -4,6 +4,7 @@ const util = require('util');
 const User = require('../models/userModel.js');
 const catchAsync = require('../utils/catchAsync.js');
 const AppError = require('../utils/appError.js');
+const sendEmail = require('../utils/emailSender.js');
 
 const signToken = (id) => {
 	const secretKey = process.env.JWT_SECRET_KEY;
@@ -124,6 +125,28 @@ exports.forgotPassword = catchAsync( async (req, res, next) => {
 	await user.save({validateBeforeSave: false});
 
 	//3) Email it to the user
+	const resetURL = `${req.protocol}://${host}/api/v1/users/resetPassword/${resetToken}`;
+	const message = `Forgot password? Reset your password and confirm it from ${resetURL}. This link will be only valid for 10 mins. If you didn't want to reset the password then please ignore this email`;
+
+	try {
+		await sendEmail({
+			email: user.email,
+			subject: 'Your magical link to reset your password',
+			message,
+		});
+
+		res.status(200).json({
+			status: 'success',
+			message: 'Password reset link sent successfully !'
+		});
+	} catch (err) {
+		user.passwordResetToken = undefined;
+		user.passwordResetExpires = undefined;
+		await user.save({validateBeforeSave: false});
+
+		return next(new AppError('There was some error while sending the reset link email', 500));
+	}
+	
 });
 
 exports.resetPassword = (req, res, next) => {
