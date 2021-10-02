@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const crypto = require('crypto');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
@@ -39,7 +40,9 @@ const userSchema = new mongoose.Schema({
 			message: 'Your passwords does not match'
 		}
 	},
-	passwordChangedAt: Date
+	passwordChangedAt: Date,
+	passwordResetToken: String,
+	passwordResetExpires: Date
 });
 
 //Document middleware to hash the passwords before they are getting updated or saved
@@ -70,6 +73,15 @@ userSchema.methods.passwordChangedAfter = function(tokenTimestamp) {
 	return false;
 }
 
+userSchema.methods.createPasswordResetToken = function() {
+	const resetToken = crypto.randomBytes(32).toString('hex');
+
+	this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+	this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+	console.log({resetToken}, this.passwordResetToken);
+	return resetToken;
+}
 
 const User = mongoose.model('User', userSchema);
 
