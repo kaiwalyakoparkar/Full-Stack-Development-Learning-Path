@@ -45,6 +45,7 @@ const userSchema = new mongoose.Schema({
 	passwordResetExpires: Date
 });
 
+//MIDDLEWARES
 //Document middleware to hash the passwords before they are getting updated or saved
 userSchema.pre('save', async function (next) {
 	//If the password field was not updated then move to next middleware
@@ -57,6 +58,14 @@ userSchema.pre('save', async function (next) {
 	next();
 });
 
+userSchema.pre('save', function(next) {
+	//if the document was not mofied or it's new then just return we don't need to do the further functions
+	if(!this.isModified() || this.isNew()) return next();
+
+	this.passwordChangedAt = Date.now() - 1000;
+});
+
+//GLOBAL METHODS
 userSchema.methods.correctPassword = async function (enteredPassword, databasePassword) {
 	return await bcrypt.compare(enteredPassword, databasePassword);
 }
