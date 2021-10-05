@@ -60,7 +60,7 @@ userSchema.pre('save', async function (next) {
 
 userSchema.pre('save', function(next) {
 	//if the document was not mofied or it's new then just return we don't need to do the further functions
-	if(!this.isModified() || this.isNew()) return next();
+	if(!this.isModified() || this.isNew) return next();
 
 	this.passwordChangedAt = Date.now() - 1000;
 });
