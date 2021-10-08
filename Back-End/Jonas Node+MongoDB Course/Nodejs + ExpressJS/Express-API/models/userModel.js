@@ -70,6 +70,12 @@ userSchema.pre('save', function(next) {
 	this.passwordChangedAt = Date.now() - 1000;
 });
 
+//Query middleware for eliminating deleted user (active: false);
+userSchema.pre(/^find/, function(next) {
+	this.find({active: {$ne: false}});
+	next();
+});
+
 //GLOBAL METHODS
 userSchema.methods.correctPassword = async function (enteredPassword, databasePassword) {
 	return await bcrypt.compare(enteredPassword, databasePassword);
