@@ -42,7 +42,12 @@ const userSchema = new mongoose.Schema({
 	},
 	passwordChangedAt: Date,
 	passwordResetToken: String,
-	passwordResetExpires: Date
+	passwordResetExpires: Date,
+	active: {
+		type: Boolean,
+		default: true,
+		select: false
+	}
 });
 
 //MIDDLEWARES
@@ -63,6 +68,12 @@ userSchema.pre('save', function(next) {
 	if(!this.isModified() || this.isNew) return next();
 
 	this.passwordChangedAt = Date.now() - 1000;
+});
+
+//Query middleware for eliminating deleted user (active: false);
+userSchema.pre(/^find/, function(next) {
+	this.find({active: {$ne: false}});
+	next();
 });
 
 //GLOBAL METHODS
