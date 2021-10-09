@@ -15,7 +15,25 @@ const signToken = (id) => {
 
 const createAndSendToken = (user, statusCode, res) => {
 
+	//Creating a jwt token
 	const token = signToken(user._id);
+
+	//Creating a cookie
+	const cookieOptions = {
+		expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
+		// secure: true, //commented it becuase else we won't be able to test it in devlopment
+		httpOnly: true
+	}
+
+	if(process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+
+	res.cookie('jwt_cookie', token, cookieOptions);
+
+	//Sending the token with the response
+
+	//we are getting password in the response but we don't want it so we are removing it from response
+	user.password = undefined;
+
 	res.status(statusCode).json({
 		status: 'success',
 		token,
