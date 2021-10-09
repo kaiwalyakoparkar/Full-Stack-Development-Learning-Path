@@ -1,6 +1,8 @@
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
+const rateLimit = require('express-rate-limit');
+
 const app = express();
 
 const tourRoute = require(path.join(__dirname, './routes/tourRoutes.js'));
@@ -15,13 +17,21 @@ app.use((req, res, next) => {
   next();
 });
 
-//External Middleware
-app.use(express.json());
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
 }
 
+//Rate limiter
+const limiter = rateLimit({
+  max: 100,
+  windowMs: 60*60*1000,
+  message: 'Too many request from this IP please try again later after an hour'
+});
+app.use('/api', limiter);
+
+//External Middleware
+app.use(express.json());
 app.use(express.static(path.join(__dirname+'/public')));
 
 //Routes Mounting.
