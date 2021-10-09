@@ -30,6 +30,10 @@ const createAndSendToken = (user, statusCode, res) => {
 	res.cookie('jwt_cookie', token, cookieOptions);
 
 	//Sending the token with the response
+
+	//we are getting password in the response but we don't want it so we are removing it from response
+	user.password = undefined;
+
 	res.status(statusCode).json({
 		status: 'success',
 		token,
