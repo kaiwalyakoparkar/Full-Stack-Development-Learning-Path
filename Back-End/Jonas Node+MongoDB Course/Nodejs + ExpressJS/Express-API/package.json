@@ -29,8 +29,7 @@
     "morgan": "^1.10.0",
     "nodemailer": "^6.6.5",
     "slugify": "^1.6.0",
-    "validator": "^13.6.0",
-    "xss": "^1.0.10"
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
