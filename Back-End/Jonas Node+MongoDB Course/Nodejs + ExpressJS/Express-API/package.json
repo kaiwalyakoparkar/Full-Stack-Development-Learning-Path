@@ -24,6 +24,7 @@
     "express-mongo-sanitize": "^2.1.0",
     "express-rate-limit": "^5.4.1",
     "helmet": "^4.6.0",
+    "hpp": "^0.2.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.7",
     "morgan": "^1.10.0",
