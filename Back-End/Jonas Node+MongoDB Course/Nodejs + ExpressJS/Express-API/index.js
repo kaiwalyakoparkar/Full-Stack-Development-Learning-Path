@@ -3,6 +3,8 @@ const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
 
 const app = express();
 
@@ -34,6 +36,8 @@ app.use('/api', limiter);
 
 //External Middleware
 app.use(express.json({ limit: '10kb' }));
+app.use(mongoSanitize());//this will eliminate all the query injections
+
 app.use(express.static(path.join(__dirname+'/public')));
 
 //Routes Mounting.
