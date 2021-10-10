@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(helmet());
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
@@ -31,7 +33,7 @@ const limiter = rateLimit({
 app.use('/api', limiter);
 
 //External Middleware
-app.use(express.json());
+app.use(express.json({ limit: '10kb' }));
 app.use(express.static(path.join(__dirname+'/public')));
 
 //Routes Mounting.
