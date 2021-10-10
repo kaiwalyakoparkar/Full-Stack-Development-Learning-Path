@@ -36,7 +36,8 @@ app.use('/api', limiter);
 
 //External Middleware
 app.use(express.json({ limit: '10kb' }));
-app.use(mongoSanitize());//this will eliminate all the query injections
+app.use(mongoSanitize()); //this will eliminate all the query injections
+app.use(xss()); //this will eliminate the code injections (html, js etc)
 
 app.use(express.static(path.join(__dirname+'/public')));
 
