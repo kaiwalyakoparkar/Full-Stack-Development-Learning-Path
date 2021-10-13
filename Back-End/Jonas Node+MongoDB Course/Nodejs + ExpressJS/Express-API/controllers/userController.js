@@ -2,6 +2,35 @@ const catchAsync = require('../utils/catchAsync.js');
 const AppError = require('../utils/appError.js');
 const User = require('../models/userModel.js');
 
+const multer = require('multer');
+
+//Stating the storage factors for the file being uploaded
+const multerStorage = multer.diskStorage({
+  destination: (req, file, callBack) => {
+    callBack(null, 'public/img/users');
+    
+  },
+  filename: (req, file, callBack) => {
+    const ext = file.mimetype.split('/')[1];
+    callBack(null, `user-${req.user.id}-${Date.now()}.${ext}`);
+  }
+});
+
+//Creating a filter to allow certain files to be uploaded
+const multerFilter = (req, file, callBack) => {
+  if(file.mimetype.startsWith('image')) {
+    callBack(null, true);
+  } else {
+    callBack(new AppError('Please upload an image', 400), false);
+  }
+}
+
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter
+});
+exports.uploadUserPhoto = upload.single('photo');
+
 //================ Get all users =========================
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const user = await User.find();
