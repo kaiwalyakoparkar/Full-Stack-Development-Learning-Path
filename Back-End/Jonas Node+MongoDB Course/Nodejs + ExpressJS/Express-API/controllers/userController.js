@@ -2,6 +2,11 @@ const catchAsync = require('../utils/catchAsync.js');
 const AppError = require('../utils/appError.js');
 const User = require('../models/userModel.js');
 
+const multer = require('multer');
+const upload = multer({dest: 'public/img/users'});
+
+exports.uploadUserPhoto = upload.single('photo');
+
 //================ Get all users =========================
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const user = await User.find();
