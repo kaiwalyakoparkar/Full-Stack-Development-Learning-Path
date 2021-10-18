@@ -3,18 +3,22 @@ const AppError = require('../utils/appError.js');
 const User = require('../models/userModel.js');
 
 const multer = require('multer');
+const sharp = require('sharp');
 
 //Stating the storage factors for the file being uploaded
-const multerStorage = multer.diskStorage({
-  destination: (req, file, callBack) => {
-    callBack(null, 'public/img/users');
+// const multerStorage = multer.diskStorage({
+//   destination: (req, file, callBack) => {
+//     callBack(null, 'public/img/users');
     
-  },
-  filename: (req, file, callBack) => {
-    const ext = file.mimetype.split('/')[1];
-    callBack(null, `user-${req.user.id}-${Date.now()}.${ext}`);
-  }
-});
+//   },
+//   filename: (req, file, callBack) => {
+//     const ext = file.mimetype.split('/')[1];
+//     callBack(null, `user-${req.user.id}-${Date.now()}.${ext}`);
+//   }
+// });
+
+//Multer storage while using sharp
+const multerStorage = multer.memoryStorage();
 
 //Creating a filter to allow certain files to be uploaded
 const multerFilter = (req, file, callBack) => {
@@ -31,6 +35,16 @@ const upload = multer({
 });
 
 exports.uploadUserPhoto = upload.single('photo');
+
+exports.resizeUserPhote = (req, res, next) => {
+  if(!req.file) return next();
+
+  req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
+
+  sharp(req.file.buffer).resize(500, 500).toFormat('jpeg').jpeg({ quality: 90 }).toFile(`public/img/users/${req.file.filename}`);
+
+  next();
+}
 
 //================ Get all users =========================
 exports.getAllUsers = catchAsync(async (req, res, next) => {
