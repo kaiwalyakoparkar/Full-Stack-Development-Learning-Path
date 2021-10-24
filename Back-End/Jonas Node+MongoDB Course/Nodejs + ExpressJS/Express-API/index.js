@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
+const compression = require('compression');
 
 const app = express();
 
@@ -49,6 +50,8 @@ app.use(hpp({
     'price'
   ]
 })); //this prevents the parameter pollution
+
+app.use(compression());
 
 app.use(express.static(path.join(__dirname+'/public')));
 
