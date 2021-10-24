@@ -39,3 +39,11 @@ process.on('unhandledRejection', err => {
     process.exit(1);
   })
 });
+
+//When Heroku recieves SIGTERM call it terminates all the ongoing requests and we don't want that so
+process.on('SIGTERM', () => {
+  console.log('SIGTERM recieved. Shutting down the server 👋');
+  server.close(() => {
+    console.log('💥 Process terminated');
+  })
+});
