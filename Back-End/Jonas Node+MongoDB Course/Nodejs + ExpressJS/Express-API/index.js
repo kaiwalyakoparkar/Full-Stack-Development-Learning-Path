@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
+const cors = require('cors');
 
 const app = express();
 
@@ -17,6 +18,22 @@ const globalErrorHandler = require(path.join(__dirname,'./controllers/errorContr
 const appError = require(path.join(__dirname, './utils/appError.js'));
 
 //My custom middleware
+
+//Implementing CORS
+//1) If we have to allow every domain to access our api
+app.use(cors()); //will allow requests from all domains.
+
+//2) If we have to allow only on the main domain eg:
+//backend: api.kaiwalya.com, frontend: kaiwalya.com so we want cors for kaiwalya.com and all its subdomains
+// app.use(cors({
+//   origin: 'https://www.kaiwalya.com'
+// }))
+
+//now we will handle the non-normal requests
+app.options('*', cors()); //will allow for all routes
+//or if for specific route then
+// app.options('/api/v1/tours/:id', cors());
+
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
   next();
