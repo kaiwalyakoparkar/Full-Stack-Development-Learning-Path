@@ -4,9 +4,10 @@ const chalk = require('chalk');
 
 //Variable assignments
 const app = express();
+const log = console.log;
 
 //App operations
-console.log('✅ App Started');
+log(chalk.cyan('✅ App Started'));
 
 const port = process.env.PORT || 3000;
 
@@ -18,5 +19,5 @@ app.get('/api/v1/books', (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`✅ Server started at http://localhost:${port}`);
+	log(chalk.cyan(`✅ Server started at http://localhost:${port}`));
 });
