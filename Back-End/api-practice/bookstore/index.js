@@ -1,6 +1,11 @@
+//External library imports
 const express = require('express');
+const chalk = require('chalk');
+
+//Variable assignments
 const app = express();
 
+//App operations
 console.log('✅ App Started');
 
 const port = process.env.PORT || 3000;
