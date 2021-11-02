@@ -12,3 +12,4 @@
 /node_modules/
 *.env
 ```
+- Add `.env` & `.sample-env` files
