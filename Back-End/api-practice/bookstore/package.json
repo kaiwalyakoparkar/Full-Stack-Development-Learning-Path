@@ -2,7 +2,7 @@
   "name": "bookstore",
   "version": "1.0.0",
   "description": "Api for a local Bookstore",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
