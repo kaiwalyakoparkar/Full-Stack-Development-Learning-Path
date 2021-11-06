@@ -10,4 +10,6 @@ const bookController = require('../controllers/booksController.js');
 //Route operations
 route.route('/').get(bookController.getAllBooks);
 
+route.route('/:id').get(bookController.getSingleBook);
+
 module.exports = route;
