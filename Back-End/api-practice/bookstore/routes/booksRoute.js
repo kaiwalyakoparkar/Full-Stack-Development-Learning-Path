@@ -8,8 +8,8 @@ const route = express.Router();
 const bookController = require('../controllers/booksController.js');
 
 //Route operations
-route.route('/').get(bookController.getAllBooks);
+route.route('/').get(bookController.getAllBooks).post(bookController.addNewBook);
 
-route.route('/:id').get(bookController.getSingleBook);
+// route.route('/:id').get(bookController.getSingleBook);
 
 module.exports = route;
