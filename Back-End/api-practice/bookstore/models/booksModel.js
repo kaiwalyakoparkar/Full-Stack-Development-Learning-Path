@@ -13,7 +13,7 @@ const bookSchema = new mongoose.Schema({
 		type: Number,
 		required: [true, 'Book should have no of pages']
 	},
-	languages: [String],
+	languages: [{type: String}],
 	publisher: String,
 	publicationDate: Date,
 	weight: Number,
@@ -22,7 +22,7 @@ const bookSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Book should have a author']
 	},
-	genre: [String],
+	genre: [{type: String}],
 	inStock: {
 		type: Boolean,
 		required: [true, 'Book should have information about stock availability'],
@@ -36,6 +36,10 @@ const bookSchema = new mongoose.Schema({
 		type: String,
 		trim: true
 	},
+},
+{
+  toJSON: {virtuals: true},
+  toObject: {virtuals: true}
 });
 
 const Book = mongoose.model('Book', bookSchema);
