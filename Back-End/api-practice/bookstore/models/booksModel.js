@@ -13,7 +13,7 @@ const bookSchema = new mongoose.Schema({
 		type: Number,
 		required: [true, 'Book should have no of pages']
 	},
-	languages: [{type: String}],
+	languages: [String],
 	publisher: String,
 	publicationDate: Date,
 	weight: Number,
@@ -22,7 +22,7 @@ const bookSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Book should have a author']
 	},
-	genre: [{type: String}],
+	genre: [String],
 	inStock: {
 		type: Boolean,
 		required: [true, 'Book should have information about stock availability'],
