@@ -41,6 +41,62 @@ exports.addNewBook = async (req, res, next) => {
     res.status(404).json({
       status: 'Error',
       message: err
-    })
+    });
+  }
+}
+
+exports.getSingleBook = async (req, res, next) => {
+  try {
+    const book = await Book.findById(req.params.id);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        book
+      }
+    });
+
+  } catch (err) {
+    res.status(404).json({
+      status: 'Error',
+      message: err
+    });
+  }
+}
+
+exports.updateBook = async (req, res, next) => {
+  try {
+    const book = await Book.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+    res.status(203).json({
+      status: 'success',
+      data: {
+        book
+      }
+    });
+
+  } catch (err) {
+    res.status(404).json({
+      status: 'Error',
+      message: err
+    });
+  }
+}
+
+exports.deleteBook = async (req, res, next) => {
+  try {
+    const book = await Book.findByIdAndDelete(req.params.id);
+
+    res.status(204).json({
+      status: 'success',
+      data: {
+        book
+      }
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: 'Error',
+      message: err
+    });
   }
 }
