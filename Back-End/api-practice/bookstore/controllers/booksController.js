@@ -41,6 +41,25 @@ exports.addNewBook = async (req, res, next) => {
     res.status(404).json({
       status: 'Error',
       message: err
-    })
+    });
+  }
+}
+
+exports.getSingleBook = async (req, res, next) => {
+  try {
+    const book = await Book.findById(req.params.id);
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        book
+      }
+    });
+
+  } catch (err) {
+    res.status(404).json({
+      status: 'Error',
+      message: err
+    });
   }
 }
