@@ -4,6 +4,8 @@ const express = require('express');
 //Variable delarations
 const route = express.Router();
 
+route.use(express.json());
+
 //File imports
 const bookController = require('../controllers/booksController.js');
 
