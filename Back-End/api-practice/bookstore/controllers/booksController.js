@@ -63,3 +63,22 @@ exports.getSingleBook = async (req, res, next) => {
     });
   }
 }
+
+exports.updateBook = async (req, res, next) => {
+  try {
+    const book = await Book.findByIdAndUpdate(req.params.id, req.body, {new: true});
+
+    res.status(203).json({
+      status: 'success',
+      data: {
+        book
+      }
+    });
+
+  } catch (err) {
+    res.status(404).json({
+      status: 'Error',
+      message: err
+    });
+  }
+}
