@@ -21,7 +21,8 @@
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.14"
+    "nodemon": "^2.0.14",
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
