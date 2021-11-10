@@ -9,3 +9,5 @@ route.use(express.json());
 const userController = require('../controllers/userController.js');
 
 route.route('/').get(userController.getAllUsers);
+
+module.exports = route;
