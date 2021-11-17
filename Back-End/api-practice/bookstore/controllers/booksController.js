@@ -3,10 +3,11 @@ const path = require('path');
 
 //Data imports from files.
 const Book = require('../models/booksModel.js');
+const catchAsync = require('../util/catchAsync.js');
 
 //Exporting functions.
-exports.getAllBooks = async (req, res, next) => {
-  try {
+exports.getAllBooks = catchAsync(async (req, res, next) => {
+  
     const books = await Book.find();
 
     res.status(200).json({
@@ -17,15 +18,7 @@ exports.getAllBooks = async (req, res, next) => {
         books
       }
     });
-
-  } catch (err) {
-
-    res.status(404).json({
-      status: 'success',
-      message: err
-    });
-  }
-};
+});
 
 exports.addNewBook = async (req, res, next) => {
   try {
