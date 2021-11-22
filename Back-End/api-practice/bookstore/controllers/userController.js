@@ -30,22 +30,22 @@ exports.getSingleUser = catchAsync (async (req, res, next) => {
 	})
 });
 
-exports.signUp = async (req, res, next) => {
-	try {
-		const createdUser = await User.create(req.body);
+// exports.signUp = async (req, res, next) => {
+// 	try {
+// 		const createdUser = await User.create(req.body);
 
-		res.status(201).json({
-			status: 'success',
-			requestedAt: req.requestTime,
-			data: {
-				createdUser
-			}
-		});
-	} catch (error) {
-		res.status(400).json({
-			status: 'fail',
-			message: 'There was some error while performing the action. Please try again later :)',
-			error
-		});
-	}
-}
+// 		res.status(201).json({
+// 			status: 'success',
+// 			requestedAt: req.requestTime,
+// 			data: {
+// 				createdUser
+// 			}
+// 		});
+// 	} catch (error) {
+// 		res.status(400).json({
+// 			status: 'fail',
+// 			message: 'There was some error while performing the action. Please try again later :)',
+// 			error
+// 		});
+// 	}
+// }
