@@ -1,5 +1,6 @@
-module.exports = errorHandler => {
-	return (req, res, next) => {
-		errorHandler(req, res, next).catch(err => next(err));
-	}
-}
+//================ Handling Async errors =================
+module.exports = fu => {
+  return (req, res, next) => {
+    fu(req, res, next).catch(err => next(err));
+  };
+};

@@ -8,8 +8,8 @@ route.use(express.json());
 
 const userController = require('../controllers/userController.js');
 
-// route.route('/').get(userController.getAllUsers);
-route.route('/').get(userController.getAllUsers).post(userController.signUp);
+route.route('/').get(userController.getAllUsers);
+// route.route('/').get(userController.getAllUsers).post(userController.signUp);
 route.route('/:id').get(userController.getSingleUser);
 
 module.exports = route;
