@@ -49,7 +49,6 @@ exports.updateMe = (req, res, next) => {
 
   //3) Filetring out the body in the request with permitted fields
   const filteredBody = finterObj(req.body, 'name', 'email');
-  if(req.file) filteredBody.photo = req.file.filename;
 
   //2) Update user document
   const updatedUser = User.findByIdAndUpdate(req.user.id, filteredBody, {
