@@ -21,3 +21,19 @@ mongoose.connect(DB, {
 app.listen(port, () => {
 	log(chalk.cyan(`✅ Server started at http://localhost:${port}`));
 });
+
+process.on('unhandledRejection', err => {
+	console.log(err.name, err.message);
+	console.log('Unhandled Error Detected! 💥 Closing down the application...');
+
+	server.close(() => {
+		process.exit(1);
+	});
+});
+
+process.on('SIGTERM', () => {
+	console.log('SIGTERM received. Shutting down the server 👋');
+	server.close(() => {
+		console.log('💥 Process terminated');
+	});
+});
