@@ -35,6 +35,9 @@ const userSchema = new mongoose.Schema({
 			message: 'The password does not match please try again'
 		}
 	},
+	passwordChangedAt: Date,
+	passwordResetToken: String,
+	passwordResetExpires: Date,
 	active: {
 		type: String,
 		default: true
@@ -46,6 +49,31 @@ userSchema.pre('save', async function (next) {
 	this.passwordConfirm = undefined;
 	next();
 });
+
+userSchema.methods.correctPassword = async function (enteredPassword, databasePassword) {
+	return await bcrypt.compare(enteredPassword, databasePassword);
+}
+
+userSchema.methods.passwordChangedAfter = function(tokenTimestamp) {
+	if(this.passwordChangedAt) {
+
+		const changedTimeStamp = parseInt(this.passwordChangedAt.getTime()/1000,10);
+		
+		console.log(tokenTimestamp, this.passwordChangedAt);
+		return tokenTimestamp < changedTimeStamp;
+	}
+
+	return false;
+}
+
+userSchema.methods.createPasswordResetToken = function() {
+	const resetToken = crypto.randomBytes(32).toString('hex');
+
+	this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+	this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+
+	return resetToken;
+}
 
 const User = mongoose.model('User', userSchema);
 
