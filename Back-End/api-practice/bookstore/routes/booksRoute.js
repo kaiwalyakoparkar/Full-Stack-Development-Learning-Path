@@ -8,7 +8,7 @@ route.use(express.json());
 
 //File imports
 const bookController = require('../controllers/booksController.js');
-const authController = require('../controllers/authController');
+const authController = require('../controllers/authController.js');
 
 //Route operations
 route.route('/').get(bookController.getAllBooks).post(authController.protect, authController.restrictTo('admin'), bookController.addNewBook);
