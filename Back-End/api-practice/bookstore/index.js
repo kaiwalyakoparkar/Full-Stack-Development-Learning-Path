@@ -7,6 +7,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
 const cors = require('cors');
+const morgan = require('morgan');
 
 //File imports
 const booksRoute = require('./routes/booksRoute.js');
@@ -54,12 +55,13 @@ app.use(hpp({
 
 app.use(compression());
 
+app.use('/api/v1/books', booksRoute);
+app.use('/api/v1/users', userRoute);
+
+app.use(globalErrorHandler);
+
 app.all('*', (req, res, next) => {
 	next(new appError(`${req.originalUrl} was not found on the server. Please check the Url :D`));
 });
-
-app.use('/api/v1/books', booksRoute);
-app.use('/api/v1/users', userRoute);
-app.use(globalErrorHandler);
 
 module.exports = app;
