@@ -26,14 +26,14 @@ process.on('unhandledRejection', err => {
 	console.log(err.name, err.message);
 	console.log('Unhandled Error Detected! 💥 Closing down the application...');
 
-	app.close(() => {
+	server.close(() => {
 		process.exit(1);
 	});
 });
 
 process.on('SIGTERM', () => {
 	console.log('SIGTERM received. Shutting down the server 👋');
-	app.close(() => {
+	server.close(() => {
 		console.log('💥 Process terminated');
 	});
 });

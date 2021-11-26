@@ -12,7 +12,7 @@ Given(/^I make a (.*) request to (.*)$/, function (method, endpoint) {
 });
 
 Given(/I set body to/, function (body) {
-  spec.withBody(body);
+  spec.withBody(JSON.parse(body));
 });
 
 Given(/^I set path param (.*) to (.*)$/, function (key, value) {
