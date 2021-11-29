@@ -1,0 +1,25 @@
+{
+  "name": "blog-site-using-express",
+  "version": "1.0.0",
+  "description": "This is my first project from stratch",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog",
+    "express",
+    "scratch",
+    "project",
+    "first-project"
+  ],
+  "author": "Kaiwalya Koparkar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "bookstore",
+  "version": "1.0.0",
+  "description": "Api for a local Bookstore",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon server.js",
+    "start:prod": "NODE_ENV=production nodemon server.js",
+    "tests": "concurrently -s first -k \"node ./server.js\" \"sleep 1 && npm test\"",
+    "test": "cucumber-js -p default",
+    "debug": "ndb ./server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "api",
+    "bookstore"
+  ],
+  "author": "Kaiwalya Koparkar",
+  "license": "MIT",
+  "dependencies": {
+    "@cucumber/cucumber": "^8.0.0-rc.1",
+    "bcryptjs": "^2.4.3",
+    "chalk": "^4.1.2",
+    "compression": "^1.7.4",
+    "concurrently": "^6.4.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "express-rate-limit": "^5.5.1",
+    "helmet": "^4.6.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.12",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.14",
+    "pactum": "^3.1.0",
+    "util": "^0.12.4",
+    "validator": "^13.7.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "lint-staged": "^11.2.6",
+    "prettier": "^2.4.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}

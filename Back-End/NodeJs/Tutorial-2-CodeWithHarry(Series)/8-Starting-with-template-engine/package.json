@@ -1,0 +1,23 @@
+{
+  "name": "template-engine",
+  "version": "1.0.0",
+  "description": "This is my first time learning template engine",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "template",
+    "engine",
+    "node",
+    "js",
+    "express"
+  ],
+  "author": "Kaiwalya Koparkar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9",
+    "pug": "^3.0.2"
+  }
+}
