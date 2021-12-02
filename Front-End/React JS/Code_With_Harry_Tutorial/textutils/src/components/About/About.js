@@ -68,7 +68,7 @@ export default function About() {
 			  </div>
 			</div>
 			<div className="container">
-				<button type="button" class="btn btn-primary my-3 mx-2" onClick={handleDarkModeClick}>{buttonText}</button>
+				<button type="button" className="btn btn-primary my-3 mx-2" onClick={handleDarkModeClick}>{buttonText}</button>
 			</div>
 		</div>
 	);
