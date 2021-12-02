@@ -1,5 +1,6 @@
 import Navbar from '../Navbar/Navbar';
 import TextForm from '../TextForm/TextForm'
+import About from '../About/About'
 
 function App() {
   return (
