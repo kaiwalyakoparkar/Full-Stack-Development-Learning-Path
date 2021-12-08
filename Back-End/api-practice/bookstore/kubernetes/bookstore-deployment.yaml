@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstore-deployment
+  labels:
+    app: bookstore
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookstore
+  # The template section is configuration file in itself but it is configurations for pod as pod needs to have it's seperate configurations
+  template:
+    metadata:
+      labels:
+        app: bookstore
+    spec:
+      conainers:
+      - name: bookstore_depl
+      # You need to add the container registry published image link here
+        image: bookstore_container
+        ports:
+        - containerPort: 8080
