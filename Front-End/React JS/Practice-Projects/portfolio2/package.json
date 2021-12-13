@@ -1,16 +1,14 @@
 {
-  "name": "portfolio",
+  "name": "portfolio2",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "primeicons": "^5.0.0",
-    "primereact": "^7.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
