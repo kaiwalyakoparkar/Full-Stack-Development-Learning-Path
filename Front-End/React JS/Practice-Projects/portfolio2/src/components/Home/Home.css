@@ -1,0 +1,66 @@
+*,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+.homeContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.profile-image {
+    padding: 2rem;
+    border-radius: 100%;
+    width: 80vw;
+    height: 40vh;
+}
+
+.titleName {
+    text-align: center;
+    font-size: 2rem;
+    padding: 2rem;
+}
+
+.info-paragraph {
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+@media (min-width:500px){
+
+    .homeContainer {
+        display: flex;
+        flex-direction: row-reverse;
+        margin: 2rem;
+    }
+
+    .profile-image {
+        padding: 2rem;
+        border-radius: 100%;
+        width: 60vw;
+        height: 60vh;
+        margin: 5rem;
+    }
+
+    .textArea {
+        display: flex;
+        padding: 5rem;
+        flex-direction: column;
+        margin: 2rem;
+    }
+
+    .titleName {
+        text-align: left;
+        font-size: 3rem;
+        padding: 2rem;
+    }
+
+    .info-paragraph {
+        padding: 1rem;
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+}
