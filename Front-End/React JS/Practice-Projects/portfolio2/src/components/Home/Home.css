@@ -10,10 +10,10 @@
 }
 
 .profile-image {
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 100%;
-    width: 80vw;
-    height: 40vh;
+    width: 85vw;
+    height: 85vw;
 }
 
 .titleName {
@@ -39,8 +39,8 @@
     .profile-image {
         padding: 2rem;
         border-radius: 100%;
-        width: 60vw;
-        height: 60vh;
+        width: 30vw;
+        height: 30vw;
         margin: 5rem;
     }
 
