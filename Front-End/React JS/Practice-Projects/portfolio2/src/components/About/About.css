@@ -1,0 +1,36 @@
+/**,*::before,*::after{
+    box-sizing: border-box;
+    margin-top: 0;
+}
+*/
+
+.timeline .custom-marker {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline .p-timeline-event-content,
+.timeline .p-timeline-event-opposite {
+    line-height: 1;
+}
+
+@media (max-width: 960px) {
+    .timeline .customized-timeline .p-timeline-event:nth-child(even) {
+        flex-direction: row !important;
+    }
+    .timeline .customized-timeline .p-timeline-event:nth-child(even) .p-timeline-event-content {
+        text-align: left !important;
+    }
+    .timeline .customized-timeline .p-timeline-event-opposite {
+        flex: 0;
+    }
+    .timeline .customized-timeline .p-card {
+        margin-top: 1rem;
+    }
+}
