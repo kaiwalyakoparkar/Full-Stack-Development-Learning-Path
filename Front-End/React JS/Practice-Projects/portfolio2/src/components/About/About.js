@@ -5,18 +5,22 @@ import './About.css';
 export default function About() {
 
 	const events = [
-	    { status: 'Ordered', date: '15/10/2020 10:30', icon: 'pi pi-shopping-cart', color: '#9C27B0', image: 'game-controller.jpg' },
-	    { status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
-	    { status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-shopping-cart', color: '#FF9800' },
-	    { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
+	    { status: 'Started Programming' },
+	    { status: 'Attended a Coding BootCamp' },
+	    { status: 'Learnt HTML and CSS' },
+	    { status: 'Built first webpage' },
+	    { status: 'Learnt NodeJS' },
+	    { status: 'Built a simple NodeJS express Server' },
+	    { status: 'Learnt about API' },
+	    { status: 'Built a basic API of Student Data' }
 	];
 
 	return (
-		<div className="timeline">
-			<h1>About</h1>
-			<div className="card">
-				<Timeline value={events} opposite={(item) => item.status} content={(item) => <small className="p-text-secondary">{item.date}</small>} />
-			</div>
+		<div className="card">
+			<br />
+			<h2 align="center">My Journey</h2>
+			<br />
+			<Timeline value={events} align="alternate" content={(item) => item.status} />
 		</div>
 	);
 }
