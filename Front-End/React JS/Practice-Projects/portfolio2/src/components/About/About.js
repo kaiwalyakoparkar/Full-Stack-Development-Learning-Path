@@ -21,6 +21,7 @@ export default function About() {
 			<h2 align="center">My Journey</h2>
 			<br />
 			<Timeline value={events} align="alternate" content={(item) => item.status} />
+			<br/>
 		</div>
 	);
 }
