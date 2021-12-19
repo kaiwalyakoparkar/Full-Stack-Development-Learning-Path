@@ -15,22 +15,24 @@ export default function Contact() {
 			<br/>
 			<h1 align="center">Contact</h1>
 			<br/>
-			<div className="card container">
-				<img className="messageImage" src={messageImage} alt="message here"/>
+			<div className="card contactContainer">
+                <div className="messageImageContainer">
+                    <img className="messageImage" src={messageImage} alt="message here"/>
+                </div>
                 <div className="p-fluid p-grid">
-                    <div className="p-field p-col-12 p-md-4">
+                    <div className="p-field p-col-12 p-md-4 formBox">
                         <span className="p-float-label">
                             <InputText id="inputtext" value={value1} onChange={(e) => setValue1(e.target.value)} />
                             <label htmlFor="inputtext">Name</label>
                         </span>
                     </div>
-                    <div className="p-field p-col-12 p-md-4">
+                    <div className="p-field p-col-12 p-md-4 formBox">
                         <span className="p-float-label">
                             <InputText id="inputtext" value={value1} onChange={(e) => setValue1(e.target.value)} />
                             <label htmlFor="inputtext">Email</label>
                         </span>
                     </div>
-                    <div className="p-field p-col-12 p-md-4">
+                    <div className="p-field p-col-12 p-md-4 formBox">
                         <span className="p-float-label">
                             <InputTextarea id="textarea" value={value14} onChange={(e) => setValue14(e.target.value)} rows={3} />
                             <label htmlFor="textarea">Message</label>
