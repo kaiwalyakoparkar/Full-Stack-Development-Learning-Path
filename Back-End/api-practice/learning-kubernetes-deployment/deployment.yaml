@@ -1,0 +1,49 @@
+# 1. Create a secrets config file (eg: deployment-secrets.yaml)
+# 2. Run the kubectl apply -f deployment-secrets.yaml
+# 3. Create the deployment.yaml file and add configs to it as belows and refer the secrets
+# 4. Now run kubectl apply -f deployment.yaml for running the pod with the applied secrets
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+      metadata:
+        labels:
+          app: mongodb
+      spec:
+        containers:
+        - name: mongodb
+          image: mongo
+          ports:
+          - containerPort: 27017
+          env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            valueFrom: 
+              secretKeyRef:
+                name: mongodb-secret
+                key: mongodb-root-username
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mongodb-secret
+                key: mogoddb-root-password
+# --- these three - (dashes's) indicate file break which means we can add service configuration in same file as deployment configs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  selector:
+    name: mongodb
+  ports:
+  - protocol: TCP
+    port: 27017
+    targetPort: 27017

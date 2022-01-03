@@ -4,7 +4,7 @@ Feature: API is running
   Scenario: Getting All books
     Given I make a GET request to http://localhost:3000/api/v1/books/
     When I receive a response
-    Then I expect response should have a status 200
+    Then I expect response should have a status 00
 
 
   Scenario: Getting a single book
