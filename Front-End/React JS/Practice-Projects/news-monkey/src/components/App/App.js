@@ -6,7 +6,7 @@ export default function App () {
 	return (
 		<div>
 			<Navbar />
-			<div className="carousel">
+			<div className="card-component">
 				<Card />
 			</div>
 		</div>
