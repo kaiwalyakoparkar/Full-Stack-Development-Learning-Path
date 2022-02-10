@@ -29,80 +29,49 @@ export default function Carousel () {
 
 	return (
 		<div>
-
+			
 			{/*
 				article.map(currentArticle => (
 					<div className="card" style={{width: "18rem"}}>
-					  <img className="card-img-top" src={currentArticle.urlToImage} alt="Card image cap" />
+					  <img className="card-img-top" src={currentArticle.urlToImage} alt="Card cap" />
 					  <div className="card-body">
 					    <p className="card-text">{currentArticle.description}</p>
 					  </div>
 					</div>
 				))
 			*/}
+			
 
 			
 				<div class="container">
-				  <div class="row">
+				  	<div class="row">
 
-				  	<div class="col">
-					    <div className="card" style={{width: "18rem"}}>
-						  <img className="card-img-top" src={article[0].urlToImage} alt="Card image cap" />
-						  <div className="card-body">
-						    <p className="card-text">{article[0].description}</p>
-						  </div>
+					  	<div class="col">
+						    {
+								article.map(currentArticle => (
+									<div className="card" style={{width: "18rem"}}>
+									  <img className="card-img-top" src={currentArticle.urlToImage} alt="Card cap" />
+									  <div className="card-body">
+									    <p className="card-text">{currentArticle.description}</p>
+									  </div>
+									</div>
+								))
+							}
+
 						</div>
-					</div>
 
-				    <div class="col">
-					    <div className="card" style={{width: "18rem"}}>
-						  <img className="card-img-top" src={article[1].urlToImage} alt="Card image cap" />
-						  <div className="card-body">
-						    <p className="card-text">{article[1].description}</p>
-						  </div>
-						</div>
-					</div>
-
-				    <div class="col">
-					    <div className="card" style={{width: "18rem"}}>
-						  <img className="card-img-top" src={article[2].urlToImage} alt="Card image cap" />
-						  <div className="card-body">
-						    <p className="card-text">{article[2].description}</p>
-						  </div>
-						</div>
-					</div>
-
-				    <div class="w-100"></div>
-
-				    <div class="col">
-					    <div className="card" style={{width: "18rem"}}>
-						  <img className="card-img-top" src={article[3].urlToImage} alt="Card image cap" />
-						  <div className="card-body">
-						    <p className="card-text">{article[3].description}</p>
-						  </div>
-						</div>
-					</div>
-
-				    <div class="col">
-					    <div className="card" style={{width: "18rem"}}>
-						  <img className="card-img-top" src={article[4].urlToImage} alt="Card image cap" />
-						  <div className="card-body">
-						    <p className="card-text">{article[4].description}</p>
-						  </div>
-						</div>
-					</div>
-
-				    <div class="col">
-					    <div className="card" style={{width: "18rem"}}>
-						  <img className="card-img-top" src={article[5].urlToImage} alt="Card image cap" />
-						  <div className="card-body">
-						    <p className="card-text">{article[5].description}</p>
-						  </div>
-						</div>
-					</div>
-
-				  </div>
+					    <div class="w-100"></div>
+				  	</div>
 				</div>
+			
+			{/*
+				<div className="card" style={{width: "18rem"}}>
+					<img className="card-img-top" src={article[0].urlToImage} alt="Card cap" />
+					<div className="card-body">
+						<p className="card-text">{article[0].description}</p>
+					</div>
+				</div>
+			*/}
 		</div>
 	)
 }
