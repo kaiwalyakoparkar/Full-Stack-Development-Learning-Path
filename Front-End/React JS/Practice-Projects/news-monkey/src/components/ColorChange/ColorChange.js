@@ -1,8 +1,10 @@
 import './ColorChange.css'
 import React, {useContext} from 'react';
+//Import the context
 import styleContext from '../../context/styleContext.js'
 
 export default function ColorChange () {
+	//Consume the context
 	const textColor = useContext(styleContext);
 	return (
 
@@ -17,6 +19,7 @@ export default function ColorChange () {
 				</div>
 			*/}
 
+			{/*Using the context doing textColor.styleState.color because we passed value={{styleState, update}}*/}
 			<p>{textColor.styleState.color}</p>
 		</div>
 	)

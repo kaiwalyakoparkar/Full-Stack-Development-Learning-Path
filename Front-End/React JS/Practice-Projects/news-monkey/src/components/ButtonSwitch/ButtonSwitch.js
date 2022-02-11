@@ -12,6 +12,7 @@ export default function ButtonSwitch () {
 			
 			<div className="btn-group btn-group-toggle" data-toggle="buttons">
 				  <label className="btn btn-secondary active">
+				  	{/*currentColor.update('colorNameHere') will update the state with the given color*/}
 				    <input type="radio" name="options" id="red" autoComplete="off" onClick={() => {currentColor.update('red'); console.log('red')}}/> Red
 				  </label>
 				  <label className="btn btn-secondary">
