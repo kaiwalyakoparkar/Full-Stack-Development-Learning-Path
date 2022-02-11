@@ -30,7 +30,7 @@ export default function Carousel () {
 	return (
 		<div>
 			
-			{/*
+			{
 				article.map(currentArticle => (
 					<div className="card" style={{width: "18rem"}}>
 					  <img className="card-img-top" src={currentArticle.urlToImage} alt="Card cap" />
@@ -39,39 +39,8 @@ export default function Carousel () {
 					  </div>
 					</div>
 				))
-			*/}
+			}
 			
-
-			
-				<div class="container">
-				  	<div class="row">
-
-					  	<div class="col">
-						    {
-								article.map(currentArticle => (
-									<div className="card" style={{width: "18rem"}}>
-									  <img className="card-img-top" src={currentArticle.urlToImage} alt="Card cap" />
-									  <div className="card-body">
-									    <p className="card-text">{currentArticle.description}</p>
-									  </div>
-									</div>
-								))
-							}
-
-						</div>
-
-					    <div class="w-100"></div>
-				  	</div>
-				</div>
-			
-			{/*
-				<div className="card" style={{width: "18rem"}}>
-					<img className="card-img-top" src={article[0].urlToImage} alt="Card cap" />
-					<div className="card-body">
-						<p className="card-text">{article[0].description}</p>
-					</div>
-				</div>
-			*/}
 		</div>
 	)
 }
