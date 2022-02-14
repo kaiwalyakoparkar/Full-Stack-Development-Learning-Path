@@ -1,7 +1,14 @@
+import {Typography} from '@mui/material'
+
 export default function Create () {
 	return (
 		<div>
-			<h1>Creating Notes</h1>
+			<Typography
+				variant="h6"
+				component="h2"
+			>
+				Create New Notes
+			</Typography>
 		</div>
 	)
 }
