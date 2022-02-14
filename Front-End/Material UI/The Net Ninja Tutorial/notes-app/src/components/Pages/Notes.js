@@ -35,6 +35,8 @@ export default function Notes () {
 			<Typography
 				variant="h6"
 				component="h2"
+				gutterBottom
+				color="textSecondary"
 			>
 				See all Notes
 			</Typography>
