@@ -2,12 +2,15 @@ import * as React from 'react';
 //importing the material UI library
 import {Typography} from '@mui/material';
 
-export default function Notes () {
+export default function LearnTypography () {
 	return (
 		<div>
 			{/*
 				This is how you consume the Component with it's attributes
 				
+
+				=============== TYPOGRAPHY COMPONENT =================
+
 				[Ref Site]: https://mui.com/api/typography/
 			
 
@@ -38,7 +41,7 @@ export default function Notes () {
 				gutterBottom
 				color="textSecondary"
 			>
-				See all Notes
+				This is the typography component
 			</Typography>
 		</div>
 	)
