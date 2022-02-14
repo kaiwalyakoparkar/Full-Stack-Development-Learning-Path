@@ -5,11 +5,7 @@ import {Typography} from '@mui/material';
 export default function LearnTypography () {
 	return (
 		<div>
-			{/*
-				This is how you consume the Component with it's attributes
-				
-
-				=============== TYPOGRAPHY COMPONENT =================
+			{/*=============== TYPOGRAPHY COMPONENT =================
 
 				[Ref Site]: https://mui.com/api/typography/
 			
