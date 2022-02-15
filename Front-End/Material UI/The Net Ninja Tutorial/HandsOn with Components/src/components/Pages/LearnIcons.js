@@ -6,7 +6,7 @@ import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRig
 export default function LearnIcons () {
 	return (
 		<div>
-			{/*=============== TYPOGRAPHY COMPONENT =================
+			{/*=============== Icons COMPONENT =================
 
 				[Ref Site]: https://mui.com/components/material-icons/?theme=Outlined
 							https://mui.com/components/icons/
