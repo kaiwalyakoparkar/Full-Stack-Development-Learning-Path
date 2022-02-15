@@ -7,6 +7,7 @@ import {
 
 import LearnTypography from '../Pages/LearnTypography.js';
 import LearnButton from '../Pages/LearnButton.js';
+import LearnIcons from '../Pages/LearnIcons.js';
 import './App.css';
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/typography" element={<LearnTypography />} />
-        <Route path="/button" element={<LearnButton />} />
+        <Route exact path="/button" element={<LearnButton />} />
+        <Route exact path="/icons" element={<LearnIcons />}/>
       </Switch>
     </Router>
   );
