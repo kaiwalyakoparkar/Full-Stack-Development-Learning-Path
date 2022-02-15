@@ -10,10 +10,19 @@ export default function LearnButton () {
 
 				<Button variant="text">Text</Button>
 				<Button variant="outlined">Outlined</Button>
+				<Button variant="contained" color="secondary">Click here</Button>
 			*/}
 
 
-			<Button variant="contained" color="secondary">Click here</Button>
+			<Button 
+				variant="contained" 
+				color="secondary"
+				onClick={()=> console.log('Clicked')}
+				type="submit"
+			>
+				Submit
+			</Button>
+
 			<br />
 			<br />
 			{/*=============== ButtonGroup COMPONENT =================
