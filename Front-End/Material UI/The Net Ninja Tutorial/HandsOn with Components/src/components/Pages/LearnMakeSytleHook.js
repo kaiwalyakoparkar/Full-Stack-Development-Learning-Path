@@ -47,7 +47,7 @@ export default function LearnMakeSytleHook () {
 				//Using it to apply styles to preferred button
 				className={classes.btn}
 				variant="contained" 
-				color="secondary"
+				color="primary"
 				onClick={()=> console.log('Clicked')}
 				type="submit"
 				endIcon={<KeyboardArrowRightOutlinedIcon />}
