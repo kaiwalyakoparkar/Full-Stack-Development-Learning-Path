@@ -14,6 +14,7 @@ import LearnIcons from '../Pages/LearnIcons.js';
 import LearnMakeSytleHook from '../Pages/LearnMakeSytleHook.js'
 import LearnTextField from '../Pages/LearnTextField.js'
 import LearnRadioButton from '../Pages/LearnRadioButton.js'
+import LearnGridLayout from '../Pages/LearnGridLayout.js'
 import './App.css';
 
 //Creating override object
@@ -40,6 +41,7 @@ function App() {
           <Route exact path="/makestyle" element={<LearnMakeSytleHook />}/>
           <Route exact path="/textfield" element={<LearnTextField />}/>
           <Route exact path="/radiobutton" element={<LearnRadioButton />}/>
+          <Route exact path="/gridlayout" element={<LearnGridLayout />}/>
 
         </Switch>
       </Router>
