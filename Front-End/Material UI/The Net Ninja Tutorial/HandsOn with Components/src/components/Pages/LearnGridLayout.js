@@ -30,6 +30,10 @@ export default function LearnGridLayout () {
 				<Grid item xs={4}>
 					<Item>xs=4</Item>
 				</Grid>
+
+				xs={1-12} for larger screens
+				sm={1-12} for small screens
+				md={1-12} for medium screens
 			*/}
 			<h1>Grid Layout Tutorial</h1>
 
