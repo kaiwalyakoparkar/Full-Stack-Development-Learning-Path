@@ -16,6 +16,7 @@ import LearnTextField from '../Pages/LearnTextField.js'
 import LearnRadioButton from '../Pages/LearnRadioButton.js'
 import LearnGridLayout from '../Pages/LearnGridLayout.js'
 import LearnCard from '../Pages/LearnCard.js'
+import LearnParmanentDrawer from '../Pages/LearnParmanentDrawer.js'
 import './App.css';
 
 //Creating override object
@@ -44,6 +45,7 @@ function App() {
           <Route exact path="/radiobutton" element={<LearnRadioButton />}/>
           <Route exact path="/gridlayout" element={<LearnGridLayout />}/>
           <Route exact path="/card" element={<LearnCard />}/>
+          <Route exact path="/drawer" element={<LearnParmanentDrawer />}/>
 
         </Switch>
       </Router>
