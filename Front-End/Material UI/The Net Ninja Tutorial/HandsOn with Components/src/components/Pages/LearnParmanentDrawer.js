@@ -31,7 +31,21 @@ export default function LearnParmanentDrawer () {
 				variant: Tells what is the type of the drawer
 				anchor: Tells the position drawer should be placed (right, left, top, bottom)
 
+				<Drawer
+					className={classes.drawer}
+					variant="permanent"
+					anchor="left"
+					classes={{
+						paper: classes.drawerPaper
+					}}
+				>
+					<Typography variant="h5">
+						Learning Parmanent Drawer
+					</Typography>	
+				</Drawer>
+
 			*/}
+		{/*To see complete drawer with list of tabs go to LearnLists.js*/}
 			<Drawer
 				className={classes.drawer}
 				variant="permanent"
