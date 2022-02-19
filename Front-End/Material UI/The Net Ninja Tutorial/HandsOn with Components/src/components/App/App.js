@@ -18,6 +18,7 @@ import LearnGridLayout from '../Pages/LearnGridLayout.js'
 import LearnCard from '../Pages/LearnCard.js'
 import LearnParmanentDrawer from '../Pages/LearnParmanentDrawer.js'
 import LearnLists from '../Pages/LearnLists.js'
+import LearnAppBar from '../Pages/LearnAppBar.js'
 import './App.css';
 
 //Creating override object
@@ -48,6 +49,7 @@ function App() {
           <Route exact path="/card" element={<LearnCard />}/>
           <Route exact path="/drawer" element={<LearnParmanentDrawer />}/>
           <Route exact path="/list" element={<LearnLists />}/>
+          <Route exact path="/appbar" element={<LearnAppBar />}/>
 
         </Switch>
       </Router>
