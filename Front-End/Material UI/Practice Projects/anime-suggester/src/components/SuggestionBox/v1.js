@@ -1,46 +1,29 @@
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import AnimeCard from '../AnimeCard/AnimeCard.js'
 import Grid from '@mui/material/Grid';
 import { makeStyles } from '@mui/styles';
 import IconButton from '@mui/material/IconButton';
 import ScreenSearchDesktopRoundedIcon from '@mui/icons-material/ScreenSearchDesktopRounded';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 
-const useStyles = makeStyles({
-  search: {
-    '& svg': {
-      fontSize: 75
-    }
-  },
-});
-
-
-
-export default function SuggestionBox () {
+export default async function SuggestionBox () {
+	const useStyles = makeStyles({
+	  search: {
+	    '& svg': {
+	      fontSize: 75
+	    }
+	  },
+	});
 
 	const classes = useStyles();
-	const [animeData, setAnimeData] = useState(null);
-	const [next, setNext] = useState(0);
 
+	// const [animeData, setAnimeData] = useState('');
 
-	useEffect(() => {
-		async function fetchData(){
-	        const response = (await axios.get("https://api.jikan.moe/v4/recommendations/anime"));
-			setAnimeData(response.data.data[0]);
-			console.log(animeData);
-	    } 
-	   	fetchData();
-	},[next]);
-
-	const anime_img_1 = animeData.entry[0].images.jpg.image_url;
-	const anime_title_1 =  animeData.entry[0].title;
-
-	const anime_img_2 = animeData.entry[1].images.jpg.image_url ;
-	const anime_title_2 =  animeData.entry[1].title ;
-
-	const anime_content = animeData.content;
-	console.log(animeData.entry[1].images.jpg.image_url)
+	// const response = (await axios.get("https://api.jikan.moe/v4/recommendations/anime"));
+	// setAnimeData({response});
+	// // console.log(response);
+	// console.log(animeData);
 
 	return (
 		<div>
@@ -62,8 +45,9 @@ export default function SuggestionBox () {
 				align="center"
 				color="secondary"
 			>
-				{anime_content}
+				Hello this is non api
 			</Typography>
+
 
 			<Grid 
 				container 
@@ -72,21 +56,14 @@ export default function SuggestionBox () {
 				mt={10}
 			>
 
-			{/*
 			  <Grid item xs={3}>
 			    <AnimeCard 
-			    	img="https://cdn.myanimelist.net/images/anime/6/86733.jpg"
-			    	title="Made in Abyss"
-			    />
-			  </Grid>*/}
-			
-			  <Grid item xs={3}>
-			    <AnimeCard 
-			    	img={ anime_img_1 }
-			    	title={anime_title_1}
+			    	img="https://cdn.myanimelist.net/images/anime/6/82898.jpg"
+			    	title="3-gatsu no Lion"
 			    />
 			  </Grid>
-			
+
+
 			  <Grid >
 			  	<IconButton 
 			  		aria-label="New Suggestions" 
@@ -101,24 +78,17 @@ export default function SuggestionBox () {
 			  	</IconButton>
 			  </Grid>
 
-			{/*
+
 			  <Grid item xs={3}>
 			    <AnimeCard 
 			    	img="https://cdn.myanimelist.net/images/anime/3/88469.jpg"
 			    	title="3-gatsu no Lion 2nd Season"
 			    />
 			  </Grid>
-			
-			*/}
-			<Grid item xs={3}>
-			    <AnimeCard 
-			    	img={anime_img_2 }
-			    	title={anime_title_2}
-			    />
-			  </Grid>
-			
-			
+
 			</Grid>
+
+
 		</div>
 	)
 }
