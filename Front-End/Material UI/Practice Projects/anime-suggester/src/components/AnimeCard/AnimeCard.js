@@ -9,7 +9,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 
-export default function AnimeCard ({img, title}) {
+export default function AnimeCard ({img, title, user, url}) {
 
 	const theme = useTheme();
 
@@ -23,19 +23,19 @@ export default function AnimeCard ({img, title}) {
 		            {title}
 		          </Typography>
 		          <Typography variant="subtitle1" color="text.secondary" component="div">
-		            Mac Miller
+		            {user}
 		          </Typography>
 		        </CardContent>
-		        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-		          <IconButton aria-label="previous">
-		            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
-		          </IconButton>
-		          <IconButton aria-label="play/pause">
+		        <Box sx={{alignItems: 'center', pl: 1, pb: 1 }}>
+		          
+		          <IconButton 
+		          	aria-label="play/pause"
+		          	href={url}
+		          	target="_blank"
+		          >
 		            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
 		          </IconButton>
-		          <IconButton aria-label="next">
-		            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
-		          </IconButton>
+		       
 		        </Box>
 		      </Box>
 		      <CardMedia
