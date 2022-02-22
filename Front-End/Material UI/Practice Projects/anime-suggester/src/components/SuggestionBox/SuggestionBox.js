@@ -31,7 +31,7 @@ export default function SuggestionBox () {
 
 	const anime_img_2 = animeData.data[next].entry[1].images.jpg.image_url ;
 	const anime_title_2 =  animeData.data[next].entry[1].title ;
-	const anime_url_2 = animeData.data[next].entry[0].url;
+	const anime_url_2 = animeData.data[next].entry[1].url;
 	const anime_user_2 = animeData.data[next].user.username;
 
 	const anime_content = animeData.data[next].content;

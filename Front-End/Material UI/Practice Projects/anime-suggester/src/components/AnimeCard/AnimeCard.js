@@ -30,6 +30,8 @@ export default function AnimeCard ({img, title, user, url}) {
 		          
 		          <IconButton 
 		          	aria-label="play/pause"
+		          	href={url}
+		          	target="_blank"
 		          >
 		            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
 		          </IconButton>
