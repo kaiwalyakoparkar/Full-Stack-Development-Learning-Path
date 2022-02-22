@@ -85,7 +85,7 @@ export default function SuggestionBox () {
 			  		tooltip="Get New Suggestion"
 			  		className={classes.search}
 			  		onClick={() => {
-			  			setNext(Math.floor(Math.random() * 10))
+			  			setNext(Math.floor(Math.random() * 100))
 			  		}}
 			  	>
 			  		<ScreenSearchDesktopRoundedIcon />
