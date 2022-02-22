@@ -24,25 +24,18 @@ export default function SuggestionBox () {
 	const [animeData, setAnimeData] = useState(data);
 	const [next, setNext] = useState(0);
 
-
-	// useEffect(() => {
-	// 	async function fetchData(){
-	//   		const response = (await axios.get("https://api.jikan.moe/v4/recommendations/anime"));
-	// 		setAnimeData(response.data);
-	// 		console.log(animeData);
-	//     } 
-	//    	fetchData();
-	// },[]);
-
 	const anime_img_1 = animeData.data[next].entry[0].images.jpg.image_url;
 	const anime_title_1 =  animeData.data[next].entry[0].title;
+	const anime_url_1 = animeData.data[next].entry[0].url;
+	const anime_user_1 = animeData.data[next].user.username;
 
 	const anime_img_2 = animeData.data[next].entry[1].images.jpg.image_url ;
 	const anime_title_2 =  animeData.data[next].entry[1].title ;
+	const anime_url_2 = animeData.data[next].entry[0].url;
+	const anime_user_2 = animeData.data[next].user.username;
 
 	const anime_content = animeData.data[next].content;
-	console.log(animeData.data[next].entry[0].images.jpg.image_url)
-	// console.log(data);
+	// console.log(animeData.data[next].entry[0].images.jpg.image_url)
 
 	return (
 		<div>
@@ -75,19 +68,12 @@ export default function SuggestionBox () {
 				mt={10}
 			>
 
-			{/*
 			  <Grid item xs={3}>
 			    <AnimeCard 
-			    	img="https://cdn.myanimelist.net/images/anime/6/86733.jpg"
-			    	title="Made in Abyss"
-			    />
-			  </Grid>
-
-			*/}
-			  <Grid item xs={3}>
-			    <AnimeCard 
-			    	img={ anime_img_1 }
-			    	title={anime_title_1}
+			    	img = { anime_img_1 }
+			    	title = { anime_title_1 }
+			    	url = { anime_url_1 }
+			    	user = { anime_user_1 }
 			    />
 			  </Grid>
 			
@@ -105,20 +91,13 @@ export default function SuggestionBox () {
 			  		<ScreenSearchDesktopRoundedIcon />
 			  	</IconButton>
 			  </Grid>
-
-			{/*
-			  <Grid item xs={3}>
-			    <AnimeCard 
-			    	img="https://cdn.myanimelist.net/images/anime/3/88469.jpg"
-			    	title="3-gatsu no Lion 2nd Season"
-			    />
-			  </Grid>
-			*/}
 			
 			<Grid item xs={3}>
 			    <AnimeCard 
-			    	img={anime_img_2 }
-			    	title={anime_title_2}
+			    	img={ anime_img_2 }
+			    	title={ anime_title_2 }
+			    	url={ anime_url_2 }
+			    	user = { anime_user_2 }
 			    />
 			  </Grid>
 			
