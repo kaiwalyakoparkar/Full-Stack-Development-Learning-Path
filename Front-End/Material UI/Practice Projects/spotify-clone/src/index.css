@@ -4,9 +4,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #121212;
+  color: #f0f0f0;
 }
 
 code {
   font-family: Montserrat,
     monospace;
 }
+
+/*
+left panel color:  #000000;
+bottom music control panel: #181818;
+top navbar panel: #201060;
+*/
