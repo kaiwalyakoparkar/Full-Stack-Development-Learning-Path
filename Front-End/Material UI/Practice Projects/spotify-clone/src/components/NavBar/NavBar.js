@@ -7,13 +7,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
+import Button from "@mui/material/Button";
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import Grid from '@mui/material/Grid';
 
 const drawerWidth = 240
 
 const useStyle = makeStyles({
   colors: {
-  	backgroundColor: '#1e1057',
-  	color: '#ffffff'
+  	backgroundColor: '#201060',
   }
 })
 
@@ -22,53 +25,45 @@ export default function NavBar () {
 	const classes = useStyle()
 
 	return (
-		<div className={classes.colors}>
+		<div className={classes.colors} >
+
 			<AppBar position="static">
 				<Toolbar>
+			
+						<Button variant="rounded" sx={ { borderRadius: 50 } } >
+						  <ChevronLeftIcon />
+						</Button>
+						
+						<Button variant="rounded" sx={ { borderRadius: 50 } } >
+						  <ChevronRightIcon />
+						</Button>
 
-					<IconButton
-			            size="large"
-			            edge="start"
-			            color="inherit"
-			            aria-label="menu"
-			            sx={{ mr: 2 }}
-			        >
-					    <MenuIcon />
-		          	</IconButton>
+					<Grid container alignItems="right">
 
-		          	<Typography 
-		          		variant="h6" 
-		          		component="div" 
-		          		sx={{ flexGrow: 1 }}
-		          	>
-			            Spotify
-			        </Typography>
+						<Button 
+				        	variant="outlined"
+				        	sx={ { borderRadius: 28 } }
+				        	style={{justifyContent: 'right'}}
+				        >
+						  Upgrade
+						</Button>
 
-			        <IconButton
-			            size="large"
-			            edge="end"
-			            color="inherit"
-			            aria-label="menu"
-			            sx={{ mr: 2 }}
-			        >
-					    <SearchIcon />
+			          	<Button
+					        variant="circular"
+					        size="small"
+					        sx={ { borderRadius: 28 } }
+					        style={{justifyContent: 'right'}}
+					        startIcon={
+					          <Avatar
+					            src="https://i.imgur.com/Weaqj9c.png"
+					          />
+					        }
+					    >
+					        Kaiwalya Koparkar
+					    </Button>
 
-					</IconButton>
+					</Grid>
 
-		          	<IconButton
-			            size="large"
-			            edge="end"
-			            color="inherit"
-			            aria-label="menu"
-			            sx={{ mr: 2 }}
-			        >
-					    <MoreIcon />
-		          	</IconButton>
-
-		          	<Avatar
-		          		alt="User Image"
-		          		src="https://i.imgur.com/Weaqj9c.png"
-		          	/>	
 				</Toolbar>
 			</AppBar>
 		</div>

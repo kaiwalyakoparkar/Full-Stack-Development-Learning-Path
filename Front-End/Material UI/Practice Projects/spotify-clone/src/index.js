@@ -7,7 +7,10 @@ import {createTheme, ThemeProvider} from '@mui/material/styles'
 const customTheme = createTheme({
     palette: {
       //Commented to use other components smoothly
-      mode: 'dark'
+      mode: 'dark',
+      primary: {
+        main: '#ffffff'
+      }
     }
 })
 
