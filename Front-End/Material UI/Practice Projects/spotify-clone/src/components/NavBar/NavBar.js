@@ -51,18 +51,18 @@ export default function NavBar () {
 							  Upgrade
 							</Button>
 
-				          	<Button
-						        variant="circular"
-						        size="small"
-						        sx={ { borderRadius: 28 } }
-						        startIcon={
-						          <Avatar
-						            src="https://i.imgur.com/Weaqj9c.png"
-						          />
-						        }
-						    >
-						        Kaiwalya Koparkar
-						    </Button>
+				      <Button
+				        variant="circular"
+				        size="small"
+				        sx={ { borderRadius: 28 } }
+				        startIcon={
+				          <Avatar
+				            src="https://i.imgur.com/Weaqj9c.png"
+				          />
+				        }
+						  >
+					        Kaiwalya Koparkar
+					    </Button>
 
 						</div>
 

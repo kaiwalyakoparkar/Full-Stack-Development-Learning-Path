@@ -11,6 +11,11 @@ const customTheme = createTheme({
       primary: {
         main: '#ffffff'
       }
+    },
+    typography: {
+      button: {
+        textTransform: 'none'
+      }
     }
 })
 
