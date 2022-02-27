@@ -11,12 +11,16 @@ import Button from "@mui/material/Button";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
 
 const drawerWidth = 240
 
 const useStyle = makeStyles({
   colors: {
   	backgroundColor: '#201060',
+  },
+  toolbarButtons: {
+    marginLeft: 'auto',
   }
 })
 
@@ -26,46 +30,45 @@ export default function NavBar () {
 
 	return (
 		<div className={classes.colors} >
+			<Box sx={{ flexGrow: 1 }}>
+				<AppBar position="static">
+					<Toolbar>
+				
+							<Button variant="rounded" sx={ { borderRadius: 50 } } >
+							  <ChevronLeftIcon />
+							</Button>
+							
+							<Button variant="rounded" sx={ { borderRadius: 50 } } >
+							  <ChevronRightIcon />
+							</Button>
 
-			<AppBar position="static">
-				<Toolbar>
-			
-						<Button variant="rounded" sx={ { borderRadius: 50 } } >
-						  <ChevronLeftIcon />
-						</Button>
-						
-						<Button variant="rounded" sx={ { borderRadius: 50 } } >
-						  <ChevronRightIcon />
-						</Button>
+						<div className={classes.toolbarButtons}>
 
-					<Grid container alignItems="right">
+							<Button 
+					        	variant="outlined"
+					        	sx={ { borderRadius: 28 } }
+					        >
+							  Upgrade
+							</Button>
 
-						<Button 
-				        	variant="outlined"
-				        	sx={ { borderRadius: 28 } }
-				        	style={{justifyContent: 'right'}}
-				        >
-						  Upgrade
-						</Button>
-
-			          	<Button
-					        variant="circular"
-					        size="small"
-					        sx={ { borderRadius: 28 } }
-					        style={{justifyContent: 'right'}}
-					        startIcon={
-					          <Avatar
-					            src="https://i.imgur.com/Weaqj9c.png"
-					          />
-					        }
-					    >
+				      <Button
+				        variant="circular"
+				        size="small"
+				        sx={ { borderRadius: 28 } }
+				        startIcon={
+				          <Avatar
+				            src="https://i.imgur.com/Weaqj9c.png"
+				          />
+				        }
+						  >
 					        Kaiwalya Koparkar
 					    </Button>
 
-					</Grid>
+						</div>
 
-				</Toolbar>
-			</AppBar>
+					</Toolbar>
+				</AppBar>
+			</Box>
 		</div>
 	)
 }
