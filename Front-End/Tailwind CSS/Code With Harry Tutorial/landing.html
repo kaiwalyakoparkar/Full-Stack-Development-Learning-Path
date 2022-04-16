@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Landing Demo</title>
 </head>
-<body>
+<body class="bg-sky-100 max-w-fit">
 
     <!--This is navbar-->
     <div class="bg-blue-400 flex px-28 py-3 justify-between">
@@ -21,14 +21,21 @@
     </div>
 
     <!--This is main body of landing page-->
-    <div class="flex">
+    <div class="flex mx-5 my-14 justify-between">
         <!-- Discription of the product -->
-        <div>
+        <div class="px-12 py-20 ">
+            <h1 class="text-5xl justify-center">Welcome to the <span class="text-blue-400">Store</span></h1>
+            <h3 class="text-2xl flex-wrap mt-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br> Repudiandae recusandae, facere fuga est placeat necessitatibus <br> alias nam nihil ipsam, laboriosam assumenda, obcaecati atque eaque nemo eligendi quaerat architecto ratione! Illo.</h3>
+
+            <div class="flex mt-32 justify-start">
+                <button class="bg-blue-400 mr-36 w-44 h-16 rounded-lg text-white font-bold hover:text-blue-400 hover:bg-white shadow-lg">Shop Now</button>
+                <button class="bg-blue-400 w-44 h-16 rounded-lg text-white font-bold hover:text-blue-400 hover:bg-white shadow-lg">Know more</button>
+            </div>
 
         </div>
         <!-- Product Image -->
-        <div>
-            
+        <div class="mt-20">
+            <img src="https://images.unsplash.com/photo-1598128558393-70ff21433be0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXJsfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="mobile images">
         </div>
     </div>
 </body>
