@@ -1,3 +1,5 @@
+import chat_image from "../../Assets/Images/chat.svg"
+
 export default function Landing() {
     return (
         <div className="flex bg-indigo-900 text-white h-screen rounded-lg p-8">
@@ -23,8 +25,8 @@ export default function Landing() {
 
             </div>
 
-            <div className="">
-                <h1>Right</h1>
+            <div >
+                <img src={chat_image} alt="people chatting live online"/>
             </div>
 
         </div>
