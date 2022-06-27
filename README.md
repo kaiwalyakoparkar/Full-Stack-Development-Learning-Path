@@ -34,8 +34,8 @@ This repo will contain the 2 main folders Frontend & Backend and every folder wi
     - [portfolio2/](./Front-End/React%20JS/Practice-Projects/portfolio2)
 - [Vanilla-Js-Playlist/](./Front-End/Vanilla-Js-Playlist)
 - [Tailwind CSS/](./Front-End/Tailwind%20CSS)
-  -[Code_with_Harry_Tutorial](./Front-End/Tailwind%20CSS/Code%20With%20Harry%20Tutorial)  
-  -[React JS X Tailwind CSS](./Front-End/Tailwind%20CSS/React%20Js%20X%20Tailwind%20Css/landing-page)
+  - [Code_with_Harry_Tutorial/](./Front-End/Tailwind%20CSS/Code%20With%20Harry%20Tutorial)  
+  - [React JS X Tailwind CSS/](./Front-End/Tailwind%20CSS/React%20Js%20X%20Tailwind%20Css/landing-page)
   
 ### Back-End
 
