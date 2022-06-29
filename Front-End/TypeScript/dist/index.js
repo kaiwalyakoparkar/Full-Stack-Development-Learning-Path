@@ -1,8 +1,4 @@
 "use strict";
-console.log("Hello world");
-let age = 20;
-if (age > 18) {
-    console.log("You are a major");
-    age += 11;
-}
+let arr = [1, "Kaiwalya"];
+let arr1 = [1, 2, 3];
 //# sourceMappingURL=index.js.map
