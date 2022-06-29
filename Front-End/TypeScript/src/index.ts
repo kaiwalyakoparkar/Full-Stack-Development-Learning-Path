@@ -24,9 +24,27 @@
 // console.log(mySize);
 
 //======== functions ========
-function calc(income:number) {
-    // let x; will thow error because not used in code
-    return income*0.3;
-}
+// function calc(income:number) {
+//     // let x; will thow error because not used in code
+//     return income*0.3;
+// }
 
-console.log(calc(100));
+// console.log(calc(100));
+
+//======== objects ========
+let employee: {
+    readonly id: number,
+    name: string,
+    retireFunc: (date: Date) => void
+} = {
+    id : 1, 
+    name: "Kaiwalya",
+    retireFunc: (date: Date) => {
+        console.log(date);
+    }
+}
+//This is not editable/immutable (following will generate error)
+// employee.id = 3;
+
+//This is editable/mutable
+employee.name =  "Kai";
