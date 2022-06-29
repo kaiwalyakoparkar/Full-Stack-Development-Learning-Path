@@ -1,6 +1,6 @@
 "use strict";
-let arr = [1, "Kaiwalya"];
-let arr1 = [1, 2, 3];
-let mySize = 2;
-console.log(mySize);
+function calc(income) {
+    return income * 0.3;
+}
+console.log(calc(100000));
 //# sourceMappingURL=index.js.map
