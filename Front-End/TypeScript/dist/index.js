@@ -1,6 +1,12 @@
 "use strict";
-function calc(income) {
-    return income * 0.3;
+function kgToLbs(weight) {
+    if (typeof weight === "number") {
+        return weight * 2.2;
+    }
+    else {
+        return parseInt(weight) * 2.2;
+    }
 }
-console.log(calc(100000));
+console.log(kgToLbs(30));
+console.log(kgToLbs("30kg"));
 //# sourceMappingURL=index.js.map

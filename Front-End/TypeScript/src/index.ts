@@ -57,16 +57,31 @@ Following https://youtu.be/d56mG7DezGs youtube video :)
 
 
 //========= Type alias ==========
-type Employee = {
-    readonly id: number,
-    name: string,
-    retireFunc: (date: Date) => void
-}
+// type Employee = {
+//     readonly id: number,
+//     name: string,
+//     retireFunc: (date: Date) => void
+// }
 
-let employee: Employee = {
-    id : 1, 
-    name: "Kaiwalya",
-    retireFunc: (date: Date) => {
-        console.log(date);
+// let employee: Employee = {
+//     id : 1, 
+//     name: "Kaiwalya",
+//     retireFunc: (date: Date) => {
+//         console.log(date);
+//     }
+// }
+
+
+//========== Union types =========
+// here weight can be of number or string type
+function kgToLbs(weight: number|string): number {
+    //Narrowing
+    if (typeof weight === "number") {
+        return weight * 2.2;
+    } else {
+        return parseInt(weight) * 2.2;
     }
 }
+
+console.log(kgToLbs(30));
+console.log(kgToLbs("30kg"));
