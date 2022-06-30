@@ -1,3 +1,9 @@
+/*
+
+Following https://youtu.be/d56mG7DezGs youtube video :)
+
+*/
+
 // console.log("Hello world");
 
 // let age : number = 20;
@@ -32,19 +38,35 @@
 // console.log(calc(100));
 
 //======== objects ========
-let employee: {
+// let employee: {
+//     readonly id: number,
+//     name: string,
+//     retireFunc: (date: Date) => void
+// } = {
+//     id : 1, 
+//     name: "Kaiwalya",
+//     retireFunc: (date: Date) => {
+//         console.log(date);
+//     }
+// }
+//This is not editable/immutable (following will generate error)
+// employee.id = 3;
+
+//This is editable/mutable
+// employee.name =  "Kai";
+
+
+//========= Type alias ==========
+type Employee = {
     readonly id: number,
     name: string,
     retireFunc: (date: Date) => void
-} = {
+}
+
+let employee: Employee = {
     id : 1, 
     name: "Kaiwalya",
     retireFunc: (date: Date) => {
         console.log(date);
     }
 }
-//This is not editable/immutable (following will generate error)
-// employee.id = 3;
-
-//This is editable/mutable
-employee.name =  "Kai";
