@@ -74,14 +74,25 @@ Following https://youtu.be/d56mG7DezGs youtube video :)
 
 //========== Union types =========
 // here weight can be of number or string type
-function kgToLbs(weight: number|string): number {
-    //Narrowing
-    if (typeof weight === "number") {
-        return weight * 2.2;
-    } else {
-        return parseInt(weight) * 2.2;
-    }
-}
+// function kgToLbs(weight: number|string): number {
+//     //Narrowing
+//     if (typeof weight === "number") {
+//         return weight * 2.2;
+//     } else {
+//         return parseInt(weight) * 2.2;
+//     }
+// }
 
-console.log(kgToLbs(30));
-console.log(kgToLbs("30kg"));
+// console.log(kgToLbs(30));
+// console.log(kgToLbs("30kg"));
+
+//=========== Literal Type =========
+//this will give error because assigned value is not 50
+// let quantity: 50 = 51;
+
+// this will not give error because assigned value is either 50 or 100
+// let quantity: 50 | 100 = 100;
+
+// Making it less hard codded
+type Quantity = 50 | 100; //using type alias
+let quantity: Quantity = 50;
