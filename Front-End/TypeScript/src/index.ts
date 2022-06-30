@@ -94,5 +94,18 @@ Following https://youtu.be/d56mG7DezGs youtube video :)
 // let quantity: 50 | 100 = 100;
 
 // Making it less hard codded
-type Quantity = 50 | 100; //using type alias
-let quantity: Quantity = 50;
+// type Quantity = 50 | 100; //using type alias
+// let quantity: Quantity = 50;
+
+//====== Optional Chaining =========
+type Cutomer = {
+    dob: Date
+}
+
+function getCustomer(id:number):Cutomer| null | undefined {
+    return id === 0 ? null : {dob: new Date()}
+}
+
+let customer = getCustomer(1);
+//So now this will only print date only if the return is not undefined. It will not through error because it's getting undefined and just 'customer.dob' can't be handled on undefined type. 
+console.log(customer?.dob.getFullYear());
