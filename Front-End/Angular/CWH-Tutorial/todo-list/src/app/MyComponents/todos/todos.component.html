@@ -1,3 +1,4 @@
-<ul *ngFor="let todo of todos">
-    <li>{{todo.sno}} - {{todo.title}} - {{todo.desc}}</li>
-</ul>
+<!--Created Todo type -> built an todo array out of it -> rendered the array in todo component html-->
+<div *ngFor="let todo of todos">
+    <app-todo-item [todo]="todo"></app-todo-item>
+</div>
