@@ -1,1 +1,4 @@
-<p>todos works!</p>
+<!--Created Todo type -> built an todo array out of it -> rendered the array in todo component html-->
+<div *ngFor="let todo of todos">
+    <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-item>
+</div>
