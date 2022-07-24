@@ -8,6 +8,7 @@
         <app-todo-item
         [todo]="todo"
         (todoDelete)="deleteTodo($event)"
+        (taskComplete)="checkedTodo($event)"
         ></app-todo-item>
     </div>
 </ng-template>
