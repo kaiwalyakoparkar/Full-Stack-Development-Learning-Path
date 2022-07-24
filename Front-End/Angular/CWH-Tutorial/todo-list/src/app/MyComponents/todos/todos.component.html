@@ -4,10 +4,12 @@
 
 <div *ngIf="this.todos.length === 0; else elseBlock">No Todos to display</div>
 <ng-template #elseBlock>
-    <div *ngFor="let todo of todos">
+    <div *ngFor="let todo of todos; index as i">
         <app-todo-item
         [todo]="todo"
+        [i]="i"
         (todoDelete)="deleteTodo($event)"
+        (taskComplete)="checkedTodo($event)"
         ></app-todo-item>
     </div>
 </ng-template>

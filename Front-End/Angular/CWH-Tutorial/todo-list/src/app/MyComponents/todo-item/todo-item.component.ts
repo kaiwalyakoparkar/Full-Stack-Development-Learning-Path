@@ -9,7 +9,9 @@ import { Todo } from 'src/app/Todo';
 export class TodoItemComponent implements OnInit {
 
   @Input() todo: Todo; //Taking input in module from todos
+  @Input() i: number;
   @Output() todoDelete: EventEmitter<Todo> = new EventEmitter(); //Sending the reponse to delete the todo to todo.component.ts
+  @Output() taskComplete: EventEmitter<Todo> = new EventEmitter();
 
   constructor() { }
 
@@ -22,6 +24,11 @@ export class TodoItemComponent implements OnInit {
     
     //Checking if todo object is received
     console.log(`Onclick triggered ${todo.sno}`);
+  }
+
+  onCheckboxClick(todo: Todo) {
+    console.log(todo);
+    this.taskComplete.emit(todo);
   }
 
 }
