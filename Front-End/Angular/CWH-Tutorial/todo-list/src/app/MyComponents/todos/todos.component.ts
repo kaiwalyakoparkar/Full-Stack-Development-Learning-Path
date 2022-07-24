@@ -44,5 +44,6 @@ export class TodosComponent implements OnInit {
   addTodo(todo: Todo) {
     console.log(todo);
     this.todos.push(todo);
+    localStorage.setItem("todos", JSON.stringify(this.todos));
   }
 }
