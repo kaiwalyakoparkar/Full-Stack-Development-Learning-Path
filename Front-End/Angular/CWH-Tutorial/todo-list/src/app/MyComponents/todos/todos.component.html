@@ -1,15 +1,18 @@
 <!--Created Todo type -> built an todo array out of it -> rendered the array in todo component html-->
-<app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
-<h4>Your Todos</h4>
+<div class="container">
+    <h1 class="text-center mb-3 mt-3">Todo list for Kaiwalya</h1>
+    <app-add-todo (todoAdd)="addTodo($event)"></app-add-todo>
+    <h4>Your Todos</h4>
 
-<div *ngIf="this.todos.length === 0; else elseBlock">No Todos to display</div>
-<ng-template #elseBlock>
-    <div *ngFor="let todo of todos; index as i">
-        <app-todo-item
-        [todo]="todo"
-        [i]="i"
-        (todoDelete)="deleteTodo($event)"
-        (taskComplete)="checkedTodo($event)"
-        ></app-todo-item>
-    </div>
-</ng-template>
+    <div *ngIf="this.todos.length === 0; else elseBlock">No Todos to display</div>
+    <ng-template #elseBlock>
+        <div *ngFor="let todo of todos; index as i">
+            <app-todo-item
+            [todo]="todo"
+            [i]="i"
+            (todoDelete)="deleteTodo($event)"
+            (taskComplete)="checkedTodo($event)"
+            ></app-todo-item>
+        </div>
+    </ng-template>
+</div>
