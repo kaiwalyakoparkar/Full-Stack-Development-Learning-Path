@@ -1,0 +1,30 @@
+{
+    "name": "@types/mime",
+    "version": "3.0.0",
+    "description": "TypeScript definitions for mime",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/mime",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Jeff Goddard",
+            "url": "https://github.com/jedigo",
+            "githubUsername": "jedigo"
+        },
+        {
+            "name": "Daniel Hritzkiv",
+            "url": "https://github.com/dhritzkiv",
+            "githubUsername": "dhritzkiv"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/mime"
+    },
+    "scripts": {},
+    "dependencies": {},
+    "typesPublisherContentHash": "b8c6d5cf70eeadbb7f76b1404b924146152d68933aafb90f1f22afd6d9baaf06",
+    "typeScriptVersion": "4.0"
+}
