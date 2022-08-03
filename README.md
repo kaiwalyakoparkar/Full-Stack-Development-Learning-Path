@@ -32,6 +32,9 @@ This repo will contain the 2 main folders Frontend & Backend and every folder wi
     - [news-monkey/](./Front-End/React%20JS/Practice-Projects/news-monkey)
     - [portfolio/](./Front-End/React%20JS/Practice-Projects/portfolio)
     - [portfolio2/](./Front-End/React%20JS/Practice-Projects/portfolio2)
+- [Tailwind CSS/](./Front-End/Tailwind%20CSS)
+  - [Code_with_Harry_Tutorial/](./Front-End/Tailwind%20CSS/Code%20With%20Harry%20Tutorial)  
+  - [React JS X Tailwind CSS/](./Front-End/Tailwind%20CSS/React%20Js%20X%20Tailwind%20Css/landing-page)
 - [Vanilla-Js-Playlist/](./Front-End/Vanilla-Js-Playlist)
 
 ### Back-End
