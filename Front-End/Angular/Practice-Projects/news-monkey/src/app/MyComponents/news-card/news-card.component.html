@@ -1,12 +1,10 @@
-<div class="m-3 align-center">
-    <div class="container text-center">
+<div class="m-3 container">
+    <div class="text-center align-center">
         <div class="row">
-            <div class="col">
-                <div *ngFor="let ele of info" >
+            <div *ngFor="let ele of info" class="col" >
                     <app-card
                     [info]="ele">
                     </app-card>
-                </div>
             </div>
         </div>
     </div>
