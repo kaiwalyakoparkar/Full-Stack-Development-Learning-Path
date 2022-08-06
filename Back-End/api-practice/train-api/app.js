@@ -1,12 +1,8 @@
 const express = require("express");
+const trainRoute = require('./routes/trainRoutes');
 
 const app = express();
 
-app.use('/', (req, res, next) => {
-    console.log("Route initiated")
-    res.status(200).json({
-        "messsage": "works"
-    });
-})
+app.use('/api/', trainRoute)
 
 module.exports = app;
