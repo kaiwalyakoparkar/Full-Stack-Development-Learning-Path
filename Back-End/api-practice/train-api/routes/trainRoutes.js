@@ -1,12 +1,8 @@
 const express = require('express');
+const trainsController = require('../controllers/trainsController')
 
 const route = express.Router();
 
-route.get('/trains', (req, res, next) => {
-    console.log("Route initiated")
-    res.status(200).json({
-        "messsage": "works"
-    });
-})
+route.get('/', trainsController.getAllTrains);
 
 module.exports = route
