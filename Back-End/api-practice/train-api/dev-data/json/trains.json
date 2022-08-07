@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1, 
+        "name": "Train 1",
+        "train-number": "3X56HT"
+    },
+    {
+        "id": 2, 
+        "name": "Train 2",
+        "train-number": "3X56HT"
+    },
+    {
+        "id": 3, 
+        "name": "Train 3",
+        "train-number": "3X56HT"
+    },
+    {
+        "id": 4, 
+        "name": "Train 4",
+        "train-number": "3X56HT"
+    },
+    {
+        "id": 5, 
+        "name": "Train 5",
+        "train-number": "3X56HT"
+    }
+]
