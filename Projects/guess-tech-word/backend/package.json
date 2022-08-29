@@ -1,0 +1,16 @@
+{
+  "name": "gtw-backend",
+  "version": "1.0.0",
+  "description": "This is the backend for guess-tech-word application",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Kaiwalya Koparkar",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
