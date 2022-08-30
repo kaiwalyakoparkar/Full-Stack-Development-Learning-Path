@@ -1,9 +1,12 @@
+//Package and file imports
 const express = require('express');
+const guessRoute = require('./routes/guessRoutes')
 
+//variable declarations
 const app = express();
 
-app.get('/hello', (req, res) => {
-    console.log('Hello jello');
-})
+//Middlewares
+app.use('/api/v1/', guessRoute);
 
+//Exports
 module.exports = app;
