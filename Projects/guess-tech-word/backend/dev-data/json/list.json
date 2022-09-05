@@ -1,0 +1,26 @@
+[
+    {
+        "question": "Question for docker", 
+        "answer": "docker"
+    },
+    {
+        "question": "Question for kubernetes",
+        "answer": "Kubernetes"
+    },
+    {
+        "question": "Question for Javascript",
+        "answer": "JavaScript"
+    },
+    {
+        "question": "Questions for Angular",
+        "answer": "Angular"
+    },
+    {
+        "question": "Question for C",
+        "answer": "C"
+    },
+    {
+        "question": "Question for C++",
+        "answer": "C++"
+    }
+]
