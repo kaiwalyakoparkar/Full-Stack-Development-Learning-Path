@@ -1,0 +1,16 @@
+---
+#key value pair
+"apple": "I build iPhones"
+1: "This is Kaiwalya"
+---
+#Lists in yaml
+- Apple
+- Microsoft
+- Google
+- Facebook
+---
+#Block style in yaml
+countries:
+    - India
+    - America
+...
