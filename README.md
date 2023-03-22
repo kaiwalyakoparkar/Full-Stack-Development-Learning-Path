@@ -67,3 +67,7 @@ This repo contains the 2 main folders Frontend & Backend and every folder will c
 - [api-practice/](./Back-End/api-practice)
   - [bookstore/](./Back-End/api-practice/bookstore)
   - [learning-kubernetes-deployment/](./Back-End/api-practice/learning-kubernetes-deployment)
+
+## 🙏 Support
+
+Don't forget to leave a star ⭐️
